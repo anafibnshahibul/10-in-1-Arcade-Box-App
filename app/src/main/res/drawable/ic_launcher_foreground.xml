@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Outer Glow / Accent Shadow -->
+    <path
+        android:fillColor="#FF2E93"
+        android:pathData="M24,36h60c6.6,0 12,5.4 12,12v12c0,6.6 -5.4,12 -12,12h-60c-6.6,0 -12,-5.4 -12,-12v-12c0,-6.6 5.4,-12 12,-12z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M26,39h56c5.5,0 10,4.5 10,10v10c0,5.5 -4.5,10 -10,10h-56c-5.5,0 -10,-4.5 -10,-10v-10c0,-5.5 4.5,-10 10,-10z" />
+    <!-- D-Pad (Left Side) -->
+    <path
+        android:fillColor="#00F0FF"
+        android:pathData="M40,46h-4v4h-4v4h4v4h4v-4h4v-4h-4z" />
+    <!-- Action Buttons (Right Side) -->
+    <path
+        android:fillColor="#FF2E93"
+        android:pathData="M72,54m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+    <path
+        android:fillColor="#FFE600"
+        android:pathData="M80,48m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+    <!-- Screen Accent / Logo -->
+    <path
+        android:fillColor="#39FF14"
+        android:pathData="M51,48h6v2h-6z" />
+    <path
+        android:fillColor="#39FF14"
+        android:pathData="M51,52h6v2h-6z" />
+</vector>

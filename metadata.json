@@ -1,0 +1,6 @@
+{
+  "name": "Arcade Box",
+  "description": "A 10-in-1 collection of fun retro mini-games.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

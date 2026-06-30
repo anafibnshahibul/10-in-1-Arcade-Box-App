@@ -1,0 +1,2034 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGBUS (0x7) at pc=0x00007fc93ad76b15, pid=13537, tid=13574
+#
+# JRE version: OpenJDK Runtime Environment (17.0.19+10) (build 17.0.19+10-1-deb12u2-Debian)
+# Java VM: OpenJDK 64-Bit Server VM (17.0.19+10-1-deb12u2-Debian, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, linux-amd64)
+# Problematic frame:
+# V  [libjvm.so+0x576b15]  ClassFileParser::parse_method(ClassFileStream const*, bool, ConstantPool const*, AccessFlags*, JavaThread*)+0x1735
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/sbin/crash_reporter --user=%P:%s:%u:%g:%f" (or dumping to /home/anafibnshahibul/arcade-box/core.13537)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.debian.org/openjdk-17
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/java.lang=ALL-UNNAMED -Dorg.gradle.appname=gradlew org.gradle.wrapper.GradleWrapperMain assembleDebug --no-daemon --max-workers=1 --no-build-cache
+
+Host: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz, 2 cores, 2G, Debian GNU/Linux 12 (bookworm)
+Time: Tue Jun 30 18:39:50 2026 +06 elapsed time: 897.059285 seconds (0d 0h 14m 57s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fc9340183b0):  JavaThread "main" [_thread_in_vm, id=13574, stack(0x00007fc93a700000,0x00007fc93a800000)]
+
+Stack: [0x00007fc93a700000,0x00007fc93a800000],  sp=0x00007fc93a7fb5c0,  free space=1005k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x576b15]  ClassFileParser::parse_method(ClassFileStream const*, bool, ConstantPool const*, AccessFlags*, JavaThread*)+0x1735
+V  [libjvm.so+0x577948]  ClassFileParser::parse_methods(ClassFileStream const*, bool, AccessFlags*, bool*, bool*, JavaThread*)+0x158
+V  [libjvm.so+0x57a290]  ClassFileParser::parse_stream(ClassFileStream const*, JavaThread*)+0x740
+V  [libjvm.so+0x57ae7a]  ClassFileParser::ClassFileParser(ClassFileStream*, Symbol*, ClassLoaderData*, ClassLoadInfo const*, ClassFileParser::Publicity, JavaThread*)+0x1aa
+V  [libjvm.so+0xa5fe54]  KlassFactory::create_from_stream(ClassFileStream*, Symbol*, ClassLoaderData*, ClassLoadInfo const&, JavaThread*)+0x254
+V  [libjvm.so+0x5836cd]  ClassLoader::load_class(Symbol*, bool, JavaThread*)+0x18d
+V  [libjvm.so+0xe56a35]  SystemDictionary::load_instance_class_impl(Symbol*, Handle, JavaThread*)+0x3d5
+V  [libjvm.so+0xe55088]  SystemDictionary::load_instance_class(unsigned int, Symbol*, Handle, JavaThread*)+0x28
+V  [libjvm.so+0xe557ab]  SystemDictionary::resolve_instance_class_or_null(Symbol*, Handle, Handle, JavaThread*)+0x5fb
+V  [libjvm.so+0xe57246]  SystemDictionary::resolve_or_fail(Symbol*, Handle, Handle, bool, JavaThread*)+0x66
+V  [libjvm.so+0x5f7e61]  ConstantPool::klass_at_impl(constantPoolHandle const&, int, JavaThread*)+0x131
+V  [libjvm.so+0x821403]  InterpreterRuntime::_new(JavaThread*, ConstantPool*, int)+0x63
+j  java.io.ObjectInputStream.readNonProxyDesc(Z)Ljava/io/ObjectStreamClass;+20 java.base@17.0.19
+j  java.io.ObjectInputStream.readClassDesc(Z)Ljava/io/ObjectStreamClass;+72 java.base@17.0.19
+j  java.io.ObjectInputStream.readOrdinaryObject(Z)Ljava/lang/Object;+22 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject0(Ljava/lang/Class;Z)Ljava/lang/Object;+494 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject(Ljava/lang/Class;)Ljava/lang/Object;+42 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject()Ljava/lang/Object;+3 java.base@17.0.19
+j  org.gradle.internal.serialize.Message.receive(Ljava/io/InputStream;Ljava/lang/ClassLoader;)Ljava/lang/Object;+11
+j  org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Throwable;+13
+j  org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object;+2
+j  org.gradle.internal.logging.serializer.LogEventSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Lorg/gradle/internal/logging/events/LogEvent;+43
+j  org.gradle.internal.logging.serializer.LogEventSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object;+2
+J 1812 c2 org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object; (6 bytes) @ 0x00007fc924f94aec [0x00007fc924f949a0+0x000000000000014c]
+J 1804 c2 org.gradle.launcher.daemon.client.DaemonClientConnection.receive()Lorg/gradle/launcher/daemon/protocol/Message; (81 bytes) @ 0x00007fc924f7e75c [0x00007fc924f7e620+0x000000000000013c]
+J 1829 c2 org.gradle.launcher.daemon.client.DaemonClientConnection.receive()Ljava/lang/Object; (5 bytes) @ 0x00007fc924fa0fd4 [0x00007fc924fa0fa0+0x0000000000000034]
+J 1869% c1 org.gradle.launcher.daemon.client.DaemonClient.monitorBuild(Lorg/gradle/launcher/daemon/protocol/Build;Lorg/gradle/launcher/daemon/diagnostics/DaemonDiagnostics;Lorg/gradle/internal/remote/internal/Connection;Lorg/gradle/initialization/BuildCancellationToken;Lorg/gradle/initialization/BuildEventConsumer;)Ljava/lang/Object; (248 bytes) @ 0x00007fc91d70c32c [0x00007fc91d70bf00+0x000000000000042c]
+j  org.gradle.launcher.daemon.client.DaemonClient.executeBuild(Lorg/gradle/launcher/daemon/protocol/Build;Lorg/gradle/launcher/daemon/client/DaemonClientConnection;Lorg/gradle/initialization/BuildCancellationToken;Lorg/gradle/initialization/BuildEventConsumer;)Lorg/gradle/launcher/exec/BuildActionResult;+128
+j  org.gradle.launcher.daemon.client.SingleUseDaemonClient.execute(Lorg/gradle/internal/invocation/BuildAction;Lorg/gradle/launcher/exec/BuildActionParameters;Lorg/gradle/initialization/BuildRequestContext;)Lorg/gradle/launcher/exec/BuildActionResult;+109
+j  org.gradle.launcher.daemon.client.SingleUseDaemonClient.execute(Lorg/gradle/internal/invocation/BuildAction;Ljava/lang/Object;Ljava/lang/Object;)Lorg/gradle/launcher/exec/BuildActionResult;+10
+j  org.gradle.launcher.cli.RunBuildAction.run()V+74
+j  org.gradle.internal.Actions$RunnableActionAdapter.execute(Ljava/lang/Object;)V+4
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$ParseAndBuildAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+60
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$ParseAndBuildAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.DebugLoggerWarningAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+9
+j  org.gradle.launcher.cli.DebugLoggerWarningAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.WelcomeMessageAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+218
+j  org.gradle.launcher.cli.WelcomeMessageAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.NativeServicesInitializingAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+35
+j  org.gradle.launcher.cli.NativeServicesInitializingAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.ExceptionReportingAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+5
+j  org.gradle.launcher.cli.ExceptionReportingAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$WithLogging.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+299
+j  org.gradle.launcher.Main.doAction([Ljava/lang/String;Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+14
+j  org.gradle.launcher.bootstrap.EntryPoint.run([Ljava/lang/String;)V+12
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x828ae2]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, JavaThread*)+0x302
+V  [libjvm.so+0xcb9e6c]  invoke(InstanceKlass*, methodHandle const&, Handle, bool, objArrayHandle, BasicType, objArrayHandle, bool, JavaThread*) [clone .constprop.0]+0x74c
+V  [libjvm.so+0xcbaba4]  Reflection::invoke_method(oopDesc*, Handle, objArrayHandle, JavaThread*)+0x134
+V  [libjvm.so+0x903f00]  JVM_InvokeMethod+0x140
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(Ljava/lang/String;[Ljava/lang/String;)V+155
+j  org.gradle.launcher.bootstrap.ProcessBootstrap.run(Ljava/lang/String;[Ljava/lang/String;)V+2
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x828ae2]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, JavaThread*)+0x302
+V  [libjvm.so+0xcb9e6c]  invoke(InstanceKlass*, methodHandle const&, Handle, bool, objArrayHandle, BasicType, objArrayHandle, bool, JavaThread*) [clone .constprop.0]+0x74c
+V  [libjvm.so+0xcbaba4]  Reflection::invoke_method(oopDesc*, Handle, objArrayHandle, JavaThread*)+0x134
+V  [libjvm.so+0x903f00]  JVM_InvokeMethod+0x140
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.launcher.GradleMain.main([Ljava/lang/String;)V+100
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x828ae2]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, JavaThread*)+0x302
+V  [libjvm.so+0xcb9e6c]  invoke(InstanceKlass*, methodHandle const&, Handle, bool, objArrayHandle, BasicType, objArrayHandle, bool, JavaThread*) [clone .constprop.0]+0x74c
+V  [libjvm.so+0xcbaba4]  Reflection::invoke_method(oopDesc*, Handle, objArrayHandle, JavaThread*)+0x134
+V  [libjvm.so+0x903f00]  JVM_InvokeMethod+0x140
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.wrapper.BootstrapMainStarter.start([Ljava/lang/String;Ljava/io/File;)V+81
+j  org.gradle.wrapper.WrapperExecutor.execute([Ljava/lang/String;Lorg/gradle/wrapper/Install;Lorg/gradle/wrapper/BootstrapMainStarter;)V+14
+j  org.gradle.wrapper.GradleWrapperMain.main([Ljava/lang/String;)V+188
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x828ae2]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, JavaThread*)+0x302
+V  [libjvm.so+0x8c07fa]  jni_invoke_static(JNIEnv_*, JavaValue*, _jobject*, JNICallType, _jmethodID*, JNI_ArgumentPusher*, JavaThread*) [clone .constprop.1]+0x3aa
+V  [libjvm.so+0x8d216f]  jni_CallStaticVoidMethod+0x24f
+C  [libjli.so+0x4592]  JavaMain+0xd82
+C  [libjli.so+0x7b49]  ThreadJavaMain+0x9
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.io.ObjectInputStream.readNonProxyDesc(Z)Ljava/io/ObjectStreamClass;+20 java.base@17.0.19
+j  java.io.ObjectInputStream.readClassDesc(Z)Ljava/io/ObjectStreamClass;+72 java.base@17.0.19
+j  java.io.ObjectInputStream.readOrdinaryObject(Z)Ljava/lang/Object;+22 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject0(Ljava/lang/Class;Z)Ljava/lang/Object;+494 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject(Ljava/lang/Class;)Ljava/lang/Object;+42 java.base@17.0.19
+j  java.io.ObjectInputStream.readObject()Ljava/lang/Object;+3 java.base@17.0.19
+j  org.gradle.internal.serialize.Message.receive(Ljava/io/InputStream;Ljava/lang/ClassLoader;)Ljava/lang/Object;+11
+j  org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Throwable;+13
+j  org.gradle.internal.serialize.BaseSerializerFactory$ThrowableSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object;+2
+j  org.gradle.internal.logging.serializer.LogEventSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Lorg/gradle/internal/logging/events/LogEvent;+43
+j  org.gradle.internal.logging.serializer.LogEventSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object;+2
+J 1812 c2 org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer.read(Lorg/gradle/internal/serialize/Decoder;)Ljava/lang/Object; (6 bytes) @ 0x00007fc924f94aec [0x00007fc924f949a0+0x000000000000014c]
+J 1804 c2 org.gradle.launcher.daemon.client.DaemonClientConnection.receive()Lorg/gradle/launcher/daemon/protocol/Message; (81 bytes) @ 0x00007fc924f7e75c [0x00007fc924f7e620+0x000000000000013c]
+J 1829 c2 org.gradle.launcher.daemon.client.DaemonClientConnection.receive()Ljava/lang/Object; (5 bytes) @ 0x00007fc924fa0fd4 [0x00007fc924fa0fa0+0x0000000000000034]
+J 1869% c1 org.gradle.launcher.daemon.client.DaemonClient.monitorBuild(Lorg/gradle/launcher/daemon/protocol/Build;Lorg/gradle/launcher/daemon/diagnostics/DaemonDiagnostics;Lorg/gradle/internal/remote/internal/Connection;Lorg/gradle/initialization/BuildCancellationToken;Lorg/gradle/initialization/BuildEventConsumer;)Ljava/lang/Object; (248 bytes) @ 0x00007fc91d70c32c [0x00007fc91d70bf00+0x000000000000042c]
+j  org.gradle.launcher.daemon.client.DaemonClient.executeBuild(Lorg/gradle/launcher/daemon/protocol/Build;Lorg/gradle/launcher/daemon/client/DaemonClientConnection;Lorg/gradle/initialization/BuildCancellationToken;Lorg/gradle/initialization/BuildEventConsumer;)Lorg/gradle/launcher/exec/BuildActionResult;+128
+j  org.gradle.launcher.daemon.client.SingleUseDaemonClient.execute(Lorg/gradle/internal/invocation/BuildAction;Lorg/gradle/launcher/exec/BuildActionParameters;Lorg/gradle/initialization/BuildRequestContext;)Lorg/gradle/launcher/exec/BuildActionResult;+109
+j  org.gradle.launcher.daemon.client.SingleUseDaemonClient.execute(Lorg/gradle/internal/invocation/BuildAction;Ljava/lang/Object;Ljava/lang/Object;)Lorg/gradle/launcher/exec/BuildActionResult;+10
+j  org.gradle.launcher.cli.RunBuildAction.run()V+74
+j  org.gradle.internal.Actions$RunnableActionAdapter.execute(Ljava/lang/Object;)V+4
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$ParseAndBuildAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+60
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$ParseAndBuildAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.DebugLoggerWarningAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+9
+j  org.gradle.launcher.cli.DebugLoggerWarningAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.WelcomeMessageAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+218
+j  org.gradle.launcher.cli.WelcomeMessageAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.NativeServicesInitializingAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+35
+j  org.gradle.launcher.cli.NativeServicesInitializingAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.ExceptionReportingAction.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+5
+j  org.gradle.launcher.cli.ExceptionReportingAction.execute(Ljava/lang/Object;)V+5
+j  org.gradle.launcher.cli.DefaultCommandLineActionFactory$WithLogging.execute(Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+299
+j  org.gradle.launcher.Main.doAction([Ljava/lang/String;Lorg/gradle/launcher/bootstrap/ExecutionListener;)V+14
+j  org.gradle.launcher.bootstrap.EntryPoint.run([Ljava/lang/String;)V+12
+v  ~StubRoutines::call_stub
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(Ljava/lang/String;[Ljava/lang/String;)V+155
+j  org.gradle.launcher.bootstrap.ProcessBootstrap.run(Ljava/lang/String;[Ljava/lang/String;)V+2
+v  ~StubRoutines::call_stub
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.launcher.GradleMain.main([Ljava/lang/String;)V+100
+v  ~StubRoutines::call_stub
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@17.0.19
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+133 java.base@17.0.19
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@17.0.19
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@17.0.19
+j  org.gradle.wrapper.BootstrapMainStarter.start([Ljava/lang/String;Ljava/io/File;)V+81
+j  org.gradle.wrapper.WrapperExecutor.execute([Ljava/lang/String;Lorg/gradle/wrapper/Install;Lorg/gradle/wrapper/BootstrapMainStarter;)V+14
+j  org.gradle.wrapper.GradleWrapperMain.main([Ljava/lang/String;)V+188
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 7 (SIGBUS), si_code: 2 (BUS_ADRERR), si_addr: 0x00007fc93bbbb688
+
+Registers:
+RAX=0x0000000000000068, RBX=0x00007fc9043da500, RCX=0x0000000000000000, RDX=0x00007fc93bbbb688
+RSP=0x00007fc93a7fb5c0, RBP=0x00007fc93a7fb7c0, RSI=0x0000000000000000, RDI=0x00007fc9340146d8
+R8 =0x00007fc9340183b0, R9 =0x0000000000000000, R10=0x0000000000000000, R11=0x00007fc934018970
+R12=0x0000000000000000, R13=0x00007fc9340183b0, R14=0x0000000000000000, R15=0x00007fc93a7fbaa0
+RIP=0x00007fc93ad76b15, EFLAGS=0x0000000000010202, CSGSFS=0x002b000000000033, ERR=0x0000000000000007
+  TRAPNO=0x000000000000000e
+
+XMM[0]=0x0000000000000000 0x0000000000000000
+XMM[1]=0x79654b726f746365 0x6c666552646c6569
+XMM[2]=0x00007fc8a45fff70 0x00007fc8a45fff10
+XMM[3]=0x00007fc8a45fff70 0x00007fc8a45fff10
+XMM[4]=0x70756b6f6f4c2479 0x654b246568636143
+XMM[5]=0x00007fc8a45fff70 0x00007fc8a45fff10
+XMM[6]=0x617a696c61697265 0x736544247373616c
+XMM[7]=0x436d616572745374 0x63656a624f2f6f69
+XMM[8]=0x0000000000000000 0x087f8149c9000000
+XMM[9]=0x0000000000000000 0x00000000d727b62b
+XMM[10]=0x0000000000000000 0x646172672f67726f
+XMM[11]=0x0000000000000000 0x646172672f67726f
+XMM[12]=0x0000000000000000 0x80deb1fe72be5d74
+XMM[13]=0x0000000000000000 0x12835b01d807aa98
+XMM[14]=0x0000000000000000 0x59f111f13956c25b
+XMM[15]=0x0000000000000000 0x71374491428a2f98
+  MXCSR=0x00001fa0
+
+
+Register to memory mapping:
+
+RAX=0x0000000000000068 is an unknown value
+RBX={method} {0x00007fc9043da500} 
+[error occurred during error reporting (printing register info), id 0xb, SIGSEGV (0xb) at pc=0x00007fc93b3b29b1]
+
+Top of Stack: (sp=0x00007fc93a7fb5c0)
+0x00007fc93a7fb5c0:   0000000000000000 0000000000000000
+0x00007fc93a7fb5d0:   0000000000000000 0000000000000000
+0x00007fc93a7fb5e0:   0000000000000000 000000005ea0b33d
+0x00007fc93a7fb5f0:   0000000000000000 0000000000000000
+0x00007fc93a7fb600:   0000000000000000 0000000000000000
+0x00007fc93a7fb610:   0000000000000000 0000000000000000
+0x00007fc93a7fb620:   0000000000000000 00007fc9043d78b0
+0x00007fc93a7fb630:   000000000000000000007fc8bf45a180
+0x00007fc93a7fb650:   ffffffff3a7f0000 0000000000000000
+0x00007fc93a7fb660:   0000000000000000 0000000000000000
+0x00007fc93a7fb670:   0000000000000000 0000000000000039
+0x00007fc93a7fb680:   0000000000000000 002c000000000000
+0x00007fc93a7fb690:   0000000000000000 00007fc9340873e0
+0x00007fc93a7fb6a0:   0000000000000000 00007fc93b3a4f57
+0x00007fc93a7fb6b0:   00007fc934010000 00000001000000d1
+0x00007fc93a7fb6c0:   00007fc93a7fb8b0 0000000000000000
+0x00007fc93a7fb6d0:   03900000000000de 00007fc93a6656c8
+0x00007fc93a7fb6e0:   00007fc900000000 0000000000011720
+0x00007fc93a7fb6f0:   00007fc8a45fff10 00007fc8a45fff70
+0x00007fc93a7fb700:   00007fc8a4607ef8 00007fc8a45fff10
+0x00007fc93a7fb710:   00007fc8a45fff70 00007fc93b3a0000
+0x00007fc93a7fb720:   00007fc934018970 00007fc900000000
+0x00007fc93a7fb730:   0000010a00001720 0000000000000000
+0x00007fc93a7fb740:   00000001a45fff10 0000000000000000
+0x00007fc93a7fb750:   00007fc9340183b0 0000000000000005
+0x00007fc93a7fb760:   0000000000000000 0000000000000000
+0x00007fc93a7fb770:   00000000ffffffff 0000000000000000
+0x00007fc93a7fb780:   0000000000000000 0000000100000000
+0x00007fc93a7fb790:   0000000000000130 00007fc9340183b0
+0x00007fc93a7fb7a0:   00007fc8a45fff20 0000000000000288
+0x00007fc93a7fb7b0:   00007fc93a7fbaa0 0000000000000008 
+
+Instructions: (pc=0x00007fc93ad76b15)
+0x00007fc93ad76a15:   4d 89 e9  b7  ff 9574 ff48 a04c  60ff ff ff 89 45 a0 41 0fb7 c2b5 20 89  a8  b7 c3 89 45ac 8b85 94fe ff 66 9d ff  8b 
+  ff 45b0 85  ffff 44 0x00007fc93ad76a65:   68 ff b4 8554 ffff 44 8975a4  d8 9d  ff 45   00
+0x00007fc93ad76a85:   89 b8 48 ffff  9d 0x00007fc93ad76a95:   ff 8945 85 34 fe ff ff 01 d8 89 45c0
+0x00007fc93ad76aa5:   85 ff 89 c4 c0 63 00 49
+ 00  68 ff 4c 60 ff 0x00007fc93ad76ac5:   48 0f ea=NarrowOop [44]=NarrowOop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@64 (line 360)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95098: 6495 9fff | bee4 ffff 
+
+  0x00007fc924f950a0: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f950a0: ff66 90e8 
+
+  0x00007fc924f950a4: ; ImmutableOopMap {[0]=Oop [8]=Oop [16]=Oop [28]=NarrowOop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@172 (line 397)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f950a4: 5895 9fff | bdff ffff | ffeb 0f8b | e84c 8b34 | 2444 8b6c | 2418 8b5c | 241c be45 | ffff ff4c 
+  0x00007fc924f950c4: 8974 2420 | 4489 6c24 | 2c89 5c24 
+
+  0x00007fc924f950d0: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f950d0: 3066 90e8 
+
+  0x00007fc924f950d4: ; ImmutableOopMap {[8]=Oop [16]=Oop [32]=Oop [44]=NarrowOop }
+                      ;*if_icmpne {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) com.esotericsoftware.kryo.io.Input::require@180 (line 179)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f950d4: 2895 9fff | becc ffff | ff48 8904 | 2448 ff74 | 2410 488f | 4424 084c | 8974 2418 | 4489 6c24 
+  0x00007fc924f950f4: 2444 8954 | 2430 4489 | 4424 3489 
+
+  0x00007fc924f95100: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95100: 5c24 38e8 
+
+  0x00007fc924f95104: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop [36]=NarrowOop [52]=NarrowOop }
+                      ;*invokestatic arraycopy {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::require@140 (line 173)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95104: f894 9fff | be45 ffff | ff48 8b6c | 2408 4489 
+
+  0x00007fc924f95114: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95114: 5c24 2ce8 
+
+  0x00007fc924f95118: ; ImmutableOopMap {rbp=Oop [0]=Oop [16]=Oop [24]=NarrowOop }
+                      ;*if_icmplt {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) com.esotericsoftware.kryo.io.Input::require@207 (line 184)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95118: e494 9fff | be45 ffff | ff4c 8974 | 2420 4489 | 6c24 2c89 
+
+  0x00007fc924f9512c: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f9512c: 5c24 30e8 
+
+  0x00007fc924f95130: ; ImmutableOopMap {[8]=Oop [16]=Oop [32]=Oop [44]=NarrowOop }
+                      ;*if_icmple {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) com.esotericsoftware.kryo.io.Input::require@22 (line 158)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95130: cc94 9fff | be45 ffff | ff48 8904 | 2448 ff74 | 2410 488f | 4424 084c | 8974 2418 | 4489 6c24 
+  0x00007fc924f95150: 2489 5c24 
+
+  0x00007fc924f95154: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95154: 2c66 90e8 
+
+  0x00007fc924f95158: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop [36]=NarrowOop }
+                      ;*ifle {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) com.esotericsoftware.kryo.io.Input::require@65 (line 162)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95158: a494 9fff | bef6 ffff | ff48 8b2c 
+
+  0x00007fc924f95164: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95164: 2466 90e8 
+
+  0x00007fc924f95168: ; ImmutableOopMap {rbp=Oop }
+                      ;*invokeinterface read {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95168: 9494 9fff | bef6 ffff 
+
+  0x00007fc924f95170: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95170: ff66 90e8 
+
+  0x00007fc924f95174: ; ImmutableOopMap {}
+                      ;*invokeinterface readSmallInt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95174: 8894 9fff | bef6 ffff | ff48 8904 | 2448 ff74 | 2410 488f | 4424 084c | 8974 2418 
+
+  0x00007fc924f95190: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95190: 6666 90e8 
+
+  0x00007fc924f95194: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokevirtual readInt {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95194: 6894 9fff | bef6 ffff 
+
+  0x00007fc924f9519c: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f9519c: ff66 90e8 
+
+  0x00007fc924f951a0: ; ImmutableOopMap {}
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@12 (line 160)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f951a0: 5c94 9fff | bef4 ffff 
+
+  0x00007fc924f951a8: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f951a8: ff66 90e8 
+
+  0x00007fc924f951ac: ; ImmutableOopMap {rbp=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@14 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f951ac: 5094 9fff | bef6 ffff | ff48 8b6c | 2408 48ff | 7424 1048 | 8f44 2408 | 4c89 7424 | 1844 8954 
+  0x00007fc924f951cc: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f951cc: 2420 90e8 
+
+  0x00007fc924f951d0: ; ImmutableOopMap {rbp=Oop [8]=Oop [24]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@30 (line 356)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f951d0: 2c94 9fff | be45 ffff | ff4c 8974 | 2410 4489 
+
+  0x00007fc924f951e0: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f951e0: 5c24 18e8 
+
+  0x00007fc924f951e4: ; ImmutableOopMap {rbp=NarrowOop [8]=Oop [16]=Oop }
+                      ;*ifnonnull {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@28 (line 161)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f951e4: 1894 9fff | bef6 ffff | ff48 8b6c | 2408 48ff | 7424 1048 | 8f44 2408 | 4c89 7424 | 1844 8954 
+  0x00007fc924f95204: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95204: 2420 90e8 
+
+  0x00007fc924f95208: ; ImmutableOopMap {rbp=Oop [8]=Oop [24]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@15 (line 380)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95208: f493 9fff | bef6 ffff 
+
+  0x00007fc924f95210: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95210: ff66 90e8 
+
+  0x00007fc924f95214: ; ImmutableOopMap {[0]=Oop [8]=Oop [16]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@55 (line 385)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95214: e893 9fff | bef6 ffff | ff48 8904 | 2448 ff74 | 2410 488f | 4424 084c | 8974 2418 | 4489 5424 
+  0x00007fc924f95234: 2089 5c24 
+
+  0x00007fc924f95238: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95238: 2466 90e8 
+
+  0x00007fc924f9523c: ; ImmutableOopMap {[0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokestatic arraycopy {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::require@140 (line 173)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f9523c: c093 9fff | eb36 488b | f0eb 6544 
+
+  0x00007fc924f95248: ;   {metadata('java/io/IOException')}
+  0x00007fc924f95248: 8b58 0849 | bab0 4c04 | c0c8 7f00 | 0049 b800 | 0000 bfc8 | 7f00 004d | 03c3 4d8b | 4048 4d3b 
+  0x00007fc924f95268: c275 1c48 | 8be8 be14 
+
+  0x00007fc924f95270: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f95270: 0000 00e8 
+
+  0x00007fc924f95274: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=NarrowOop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::fill@22 (line 148)
+                      ; - com.esotericsoftware.kryo.io.Input::require@174 (line 178)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f95274: 8893 9fff | 488b f0eb | 2feb 04eb | 02eb 0044 
+
+  0x00007fc924f95284: ;   {metadata('com/esotericsoftware/kryo/KryoException')}
+  0x00007fc924f95284: 8b58 0841 | 81fb 1017 | 1201 75e8 | 488b d048 | 8b34 2448 | 8b6c 2408 
+
+  0x00007fc924f9529c: ;   {optimized virtual_call}
+  0x00007fc924f9529c: 6666 90e8 
+
+  0x00007fc924f952a0: ; ImmutableOopMap {rbp=Oop [0]=Oop [16]=Oop }
+                      ;*invokespecial maybeEndOfStream {reexecute=0 rethrow=0 return_oop=1}
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@12 (line 135)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f952a0: dc3d 9fff | 4885 c074 | 0d48 8bf0 | 4883 c450 
+
+  0x00007fc924f952b0: ;   {runtime_call _rethrow_Java}
+  0x00007fc924f952b0: 5de9 4abb | a9ff bef6 
+
+  0x00007fc924f952b8: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f952b8: ffff ffe8 
+
+  0x00007fc924f952bc: ; ImmutableOopMap {rbp=Oop [0]=Oop [16]=Oop }
+                      ;*athrow {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@15 (line 135)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@9 (line 243)
+                      ; - org.gradle.launcher.daemon.protocol.DaemonMessageSerializer$OutputMessageSerializer::read@2 (line 229)
+  0x00007fc924f952bc: 4093 9fff 
+
+  0x00007fc924f952c0: ;   {internal_word}
+  0x00007fc924f952c0: 49ba 5d4b | f924 c97f | 0000 4d89 | 9758 0300 
+
+  0x00007fc924f952d0: ;   {runtime_call SafepointBlob}
+  0x00007fc924f952d0: 00e9 aa9f | 9fff f4f4 | f4f4 f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x00007fc924f952e0: ;   {no_reloc}
+  0x00007fc924f952e0: 48bb 0000 | 0000 0000 
+
+  0x00007fc924f952e8: ;   {runtime_call}
+  0x00007fc924f952e8: 0000 e9fb 
+
+  0x00007fc924f952ec: ;   {static_stub}
+  0x00007fc924f952ec: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x00007fc924f952f8: ;   {runtime_call}
+  0x00007fc924f952f8: 00e9 fbff 
+
+  0x00007fc924f952fc: ;   {static_stub}
+  0x00007fc924f952fc: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x00007fc924f95308: ;   {runtime_call}
+  0x00007fc924f95308: e9fb ffff 
+
+  0x00007fc924f9530c: ;   {static_stub}
+  0x00007fc924f9530c: ff48 bb00 | 0000 0000 
+
+  0x00007fc924f95314: ;   {runtime_call}
+  0x00007fc924f95314: 0000 00e9 | fbff ffff 
+
+  0x00007fc924f9531c: ;   {static_stub}
+  0x00007fc924f9531c: 48bb 0000 | 0000 0000 
+
+  0x00007fc924f95324: ;   {runtime_call}
+  0x00007fc924f95324: 0000 e9fb 
+
+  0x00007fc924f95328: ;   {runtime_call ExceptionBlob}
+  0x00007fc924f95328: ffff ffe9 | 506e a0ff 
+[Deopt Handler Code]
+  0x00007fc924f95330: e800 0000 | 0048 832c 
+
+  0x00007fc924f95338: ;   {runtime_call DeoptimizationBlob}
+  0x00007fc924f95338: 2405 e961 | 989f fff4 
+[/MachCode]
+
+
+Compiled method (c2) 949682 1804   !   4       org.gradle.launcher.daemon.client.DaemonClientConnection::receive (81 bytes)
+ total in heap  [0x00007fc924f7e390,0x00007fc924f7fd50] = 6592
+ relocation     [0x00007fc924f7e4f0,0x00007fc924f7e608] = 280
+ main code      [0x00007fc924f7e620,0x00007fc924f7f140] = 2848
+ stub code      [0x00007fc924f7f140,0x00007fc924f7f1e0] = 160
+ oops           [0x00007fc924f7f1e0,0x00007fc924f7f1f8] = 24
+ metadata       [0x00007fc924f7f1f8,0x00007fc924f7f308] = 272
+ scopes data    [0x00007fc924f7f308,0x00007fc924f7f7f0] = 1256
+ scopes pcs     [0x00007fc924f7f7f0,0x00007fc924f7fb80] = 912
+ dependencies   [0x00007fc924f7fb80,0x00007fc924f7fbb8] = 56
+ handler table  [0x00007fc924f7fbb8,0x00007fc924f7fcd8] = 288
+ nul chk table  [0x00007fc924f7fcd8,0x00007fc924f7fd50] = 120
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x00007fc904837698} 'receive' '()Lorg/gradle/launcher/daemon/protocol/Message;' in 'org/gradle/launcher/daemon/client/DaemonClientConnection'
+  #           [sp+0x60]  (sp of caller)
+  0x00007fc924f7e620: 448b 5608 | 49bb 0000 | 00bf c87f | 0000 4d03 | d349 3bc2 
+
+  0x00007fc924f7e634: ;   {runtime_call ic_miss_stub}
+  0x00007fc924f7e634: 0f85 46a7 | a0ff 6690 | 0f1f 4000 
+[Verified Entry Point]
+  0x00007fc924f7e640: 8984 2400 | c0fe ff55 | 4883 ec50 | 4889 3424 | 448b 5e10 
+
+  0x00007fc924f7e654: ; implicit exception: dispatches to 0x00007fc924f7ed84
+  0x00007fc924f7e654: 458b 5308 
+
+  0x00007fc924f7e658: ;   {metadata('org/gradle/internal/remote/internal/inet/SocketConnection')}
+  0x00007fc924f7e658: 4181 fa00 | 1013 010f | 85c7 0400 | 004d 8bd3 | 4c89 5424 | 0841 8b6a | 1c44 8b5d 
+
+  0x00007fc924f7e674: ;   {metadata('org/gradle/internal/serialize/Serializers$StatefulSerializerAdapter$1')}
+  0x00007fc924f7e674: 0841 81fb | 1884 1301 | 0f85 be04 | 0000 4c8b | d545 8b5a | 1041 8b4b | 0c45 8b5a | 0c44 8b41 
+  0x00007fc924f7e694: ;   {metadata('org/gradle/internal/serialize/DefaultSerializerRegistry$TaggedTypeSerializer')}
+  0x00007fc924f7e694: 0841 81f8 | 981e 1101 | 0f85 aa04 | 0000 458b | 4308 4c8b | d14c 8954 
+
+  0x00007fc924f7e6ac: ;   {metadata('org/gradle/internal/serialize/kryo/KryoBackedDecoder')}
+  0x00007fc924f7e6ac: 2410 4181 | f800 0413 | 010f 85b1 | 0400 004d | 8bf3 458b | 6e18 458b | 451c 458b | 5520 458b 
+  0x00007fc924f7e6cc: 5d0c 418b | d841 2bdb | 498b fd83 | fb01 0f8c | 0c03 0000 | 448b c341 | 8bcb ffc1 | 4d63 cb41 
+  0x00007fc924f7e6ec: 83f8 050f | 8c94 0000 | 0041 894d | 0c41 8b5a | 0c44 3bdb | 0f83 8a04 | 0000 430f | be7c 0a10 
+  0x00007fc924f7e70c: 448b cf41 | 83e1 7ff7 | c780 0000 | 000f 8530 | 0200 004c | 8b54 2410 | 458b 5a14 
+
+  0x00007fc924f7e728: ; implicit exception: dispatches to 0x00007fc924f7ee04
+  0x00007fc924f7e728: 418b 6b0c | 443b cd0f | 8d93 0400 | 0044 3bcd | 0f83 c603 | 0000 438b | 6c8b 1044 | 8b55 1449 
+  0x00007fc924f7e748: 8bf2 498b | d648 b8b0 | 8611 c0c8 
+
+  0x00007fc924f7e754: ;   {virtual_call}
+  0x00007fc924f7e754: 7f00 00e8 
+
+  0x00007fc924f7e758: ; ImmutableOopMap {[0]=Oop [8]=Oop }
+                      ;*invokeinterface read {reexecute=0 rethrow=0 return_oop=1}
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@60 (line 164)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7e758: 4462 0100 
+
+  0x00007fc924f7e75c: ; implicit exception: dispatches to 0x00007fc924f7ef50
+  0x00007fc924f7e75c: 448b 5008 
+
+  0x00007fc924f7e760: ;   {metadata('org/gradle/launcher/daemon/protocol/OutputMessage')}
+  0x00007fc924f7e760: 4181 fa98 | 8411 010f | 8503 0600 | 004c 8b14 | 2441 c642 | 0c01 4883 
+
+  0x00007fc924f7e778: ;   {poll_return}
+  0x00007fc924f7e778: c450 5d49 | 3ba7 4003 | 0000 0f87 | 9809 0000 | c341 894d | 0c41 8b4a | 0c44 3bd9 | 0f83 4204 
+  0x00007fc924f7e798: 0000 470f | be5c 0a10 | 458b cb41 | 83e1 7f41 | f7c3 8000 | 0000 0f84 | 6bff ffff | 4489 4c24 
+  0x00007fc924f7e7b8: 2448 897c | 2428 4489 | 6c24 204c | 8974 2418 | 488b f7ba | 0100 0000 
+
+  0x00007fc924f7e7d0: ;   {optimized virtual_call}
+  0x00007fc924f7e7d0: 498b eee8 
+
+  0x00007fc924f7e7d4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop [32]=NarrowOop [40]=Oop }
+                      ;*invokevirtual require {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@32 (line 383)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7e7d4: a8a8 a0ff | 448b 4c24 | 2045 8b41 | 2041 8b69 | 0c44 8bd5 | 41ff c245 | 8951 0c45 | 8b50 0c41 
+  0x00007fc924f7e7f4: 3bea 0f83 | 1804 0000 | 450f be5c | 2810 418b | cb83 e17f | c1e1 070b | 4c24 2441 | f7c3 8000 
+  0x00007fc924f7e814: 0000 0f84 | bc02 0000 | 894c 2434 | 4489 5424 | 304d 8bd0 | 4c89 5424 | 3844 8944 | 2424 488b 
+  0x00007fc924f7e834: 7424 28ba | 0100 0000 | 488b 6c24 
+
+  0x00007fc924f7e840: ;   {optimized virtual_call}
+  0x00007fc924f7e840: 1866 90e8 
+
+  0x00007fc924f7e844: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop [32]=NarrowOop [36]=NarrowOop [40]=Oop [56]=Oop }
+                      ;*invokevirtual require {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@77 (line 388)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)                      receive 0x00007fc924f7e844: a8 | 8b 20690c 8bddff|   0c3b  0fc1| 0300
+  0x00007fc924f7e864: 8b5c 2424 | 450f be54 | 2b10 458b | ca41 83e1 | 7f41 c1e1 | 0e44 0b4c | 2434 41f7 | c280 0000 
+  0x00007fc924f7e884: 000f 845a | 0200 0044 | 895c 2434 | 4489 4c24 | 2448 8b74 | 2428 ba01 | 0000 0048 | 8b6c 2418 
+  0x00007fc924f7e8a4: ;   {optimized virtual_call}
+  0x00007fc924f7e8a4: 6666 90e8 
+
+  0x00007fc924f7e8a8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop [32]=NarrowOop [40]=Oop [52]=NarrowOop [56]=Oop }
+                      ;*invokevirtual require {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@116 (line 392)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7e8a8: d4a7 a0ff | 448b 4424 | 2041 8b68 | 0c44 8bdd | 41ff c345 | 8958 0c3b | 6c24 300f | 8377 0300 
+  0x00007fc924f7e8c8: 0044 8b4c | 2434 450f | be54 2910 | 458b da41 | 83e3 7f41 | c1e3 1544 | 0b5c 2424 | 41f7 c280 
+  0x00007fc924f7e8e8: 0000 000f | 84fe 0100 | 0044 895c | 2434 4489 | 4c24 2448 | 8b74 2428 | ba01 0000 | 0048 8b6c 
+  0x00007fc924f7e908: ;   {optimized virtual_call}
+  0x00007fc924f7e908: 2418 90e8 
+
+  0x00007fc924f7e90c: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop [32]=NarrowOop [36]=NarrowOop [40]=Oop [56]=Oop }
+                      ;*invokevirtual require {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@155 (line 396)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7e90c: 70a7 a0ff | 448b 5424 | 2041 8b6a | 0c44 8bdd | 41ff c345 | 895a 0c3b | 6c24 300f | 835b 0300 
+  0x00007fc924f7e92c: 0044 8b5c | 2424 450f | b64c 2b10 | 4183 e17f | 41c1 e11c | 440b 4c24 | 344c 8b74 | 2418 e9d0 
+  0x00007fc924f7e94c: fdff ff45 | 8bc3 4183 | c002 4589 | 450c 443b | c30f 83e9 | 0200 004d | 63c3 430f | be5c 0211 
+  0x00007fc924f7e96c: 8bcb 83e1 | 7fc1 e107 | 410b c9f7 | c380 0000 | 000f 8479 | 0100 0047 | 0fbe 4402 | 1241 83c3 
+  0x00007fc924f7e98c: 0345 895d | 0c45 8bc8 | 4183 e17f | 4181 e080 | 0000 0041 | c1e1 0e44 | 0bc9 4585 | c00f 8470 
+  0x00007fc924f7e9ac: fdff ffbe | 45ff ffff | 488b 2c24 | 48ff 7424 | 0848 8f04 | 2448 ff74 | 2410 488f | 4424 084c 
+  0x00007fc924f7e9cc: 8974 2418 | 4489 6c24 | 2044 894c | 2424 4489 | 5424 2844 | 8944 242c 
+
+  0x00007fc924f7e9e4: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7e9e4: 6666 90e8 
+
+  0x00007fc924f7e9e8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop [32]=NarrowOop [40]=NarrowOop }
+                      ;*ifeq {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute)readVarInt
+      
+          0x00007fc924f7ee0c: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ee0c: 2466 90e8 
+
+  0x00007fc924f7ee10: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*arraylength {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@12 (line 160)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ee10: ecf7 a0ff | bef6 ffff | ff48 8b2c | 2448 ff74 | 2408 488f | 0424 48ff | 7424 1048 | 8f44 2408 
+  0x00007fc924f7ee30: 4c89 7424 | 1844 895c 
+
+  0x00007fc924f7ee38: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ee38: 2420 90e8 
+
+  0x00007fc924f7ee3c: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@30 (line 356)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ee3c: c0f7 a0ff | be45 ffff | ff4c 8974 | 2410 4489 
+
+  0x00007fc924f7ee4c: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ee4c: 4c24 18e8 
+
+  0x00007fc924f7ee50: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop [16]=Oop }
+                      ;*ifnonnull {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@28 (line 161)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ee50: acf7 a0ff | bef6 ffff | ff48 8b2c | 2448 ff74 | 2408 488f | 0424 48ff | 7424 1048 | 8f44 2408 
+  0x00007fc924f7ee70: 4c89 7424 | 1844 895c 
+
+  0x00007fc924f7ee78: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ee78: 2420 90e8 
+
+  0x00007fc924f7ee7c: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@15 (line 380)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ee7c: 80f7 a0ff | bef6 ffff 
+
+  0x00007fc924f7ee84: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ee84: ff66 90e8 
+
+  0x00007fc924f7ee88: ; ImmutableOopMap {[0]=Oop [8]=Oop [16]=Oop [24]=Oop }
+                      ;*baload {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::readInt_slow@55 (line 385)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@11 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ee88: 74f7 a0ff | bef6 ffff | ff48 8b2c | 2448 ff74 | 2408 488f | 0424 48ff | 7424 1048 | 8f44 2408 
+  0x00007fc924f7eea8: 4c89 7424 | 1844 895c | 2420 895c 
+
+  0x00007fc924f7eeb4: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7eeb4: 2424 90e8 
+
+  0x00007fc924f7eeb8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*invokestatic arraycopy {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::require@140 (line 173)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7eeb8: 44f7 a0ff | 448b 5008 | eb3a 448b | 5808 49ba | 0000 00bf | c87f 0000 | 4d03 d34d 
+
+  0x00007fc924f7eed4: ;   {metadata('java/io/IOException')}
+  0x00007fc924f7eed4: 8b52 4849 | b8b0 4c04 | c0c8 7f00 | 004d 3bd0 | 0f85 cd00 | 0000 488b | e8be 1400 
+
+  0x00007fc924f7eef0: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7eef0: 0000 90e8 
+
+  0x00007fc924f7eef4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop [32]=NarrowOop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.esotericsoftware.kryo.io.Input::fill@22 (line 148)
+                      ; - com.esotericsoftware.kryo.io.Input::require@174 (line 178)
+                      ; - com.esotericsoftware.kryo.io.Input::readVarInt@2 (line 355)
+                      ; - com.esotericsoftware.kryo.io.Input::readInt@2 (line 350)
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@5 (line 133)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7eef4: 08f7 a0ff | 448b 5008 
+
+  0x00007fc924f7eefc: ;   {metadata('java/io/EOFException')}
+  0x00007fc924f7eefc: 4181 fac0 | 450e 0175 | 5b48 8be8 
+
+  0x00007fc924f7ef08: ;   {oop(a 'org/gradle/internal/logging/slf4j/OutputEventListenerBackedLogger'{0x00000000d68011f8})}
+  0x00007fc924f7ef08: 48be f811 | 80d6 0000 
+
+  0x00007fc924f7ef10: ;   {optimized virtual_call}
+  0x00007fc924f7ef10: 0000 90e8 
+
+  0x00007fc924f7ef14: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokespecial isDebugEnabled {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger::isDebugEnabled@1 (line 25)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@14 (line 83)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ef14: 68a1 a0ff | 85c0 7434 | 488b f548 | 8b2c 2466 | 9048 b8ff | ffff ffff 
+
+  0x00007fc924f7ef2c: ;   {virtual_call}
+  0x00007fc924f7ef2c: ffff ffe8 
+
+  0x00007fc924f7ef30: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokevirtual toString {reexecute=0 rethrow=0 return_oop=1}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@28 (line 84)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ef30: 4ca4 a0ff 
+
+  0x00007fc924f7ef34: ;   {oop("Discarding EOFException: {}"{0x00000000d6801210})}
+  0x00007fc924f7ef34: 48ba 1012 | 80d6 0000 
+
+  0x00007fc924f7ef3c: ;   {oop(a 'org/gradle/internal/logging/slf4j/OutputEventListenerBackedLogger'{0x00000000d68011f8})}
+  0x00007fc924f7ef3c: 0000 48be | f811 80d6 | 0000 0000 
+
+  0x00007fc924f7ef48: ;   {optimized virtual_call}
+  0x00007fc924f7ef48: 488b c8e8 
+
+  0x00007fc924f7ef4c: ; ImmutableOopMap {rbp=Oop [0]=Oop }
+                      ;*invokeinterface debug {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@31 (line 84)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7ef4c: 30a1 a0ff | bef4 ffff | ff48 8b2c 
+
+  0x00007fc924f7ef58: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7ef58: 2466 90e8 
+
+  0x00007fc924f7ef5c: ; ImmutableOopMap {rbp=Oop }
+                      ;*checkcast {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@9 (line 77)
+  0x00007fc924f7ef5c: a0f6 a0ff 
+
+  0x00007fc924f7ef60: ;   {metadata('java/io/ObjectStreamException')}
+  0x00007fc924f7ef60: 49bb a869 | 06c0 c87f | 0000 49b8 | 0000 00bf | c87f 0000 | 4d03 c24d | 8b48 504d | 3bcb 0f84 
+  0x00007fc924f7ef80: 8800 0000 
+
+  0x00007fc924f7ef84: ;   {metadata('java/lang/ClassNotFoundException')}
+  0x00007fc924f7ef84: 4181 fa80 | 4202 000f | 848b 0000 | 004d 8b50 
+
+  0x00007fc924f7ef94: ;   {metadata('java/io/IOException')}
+  0x00007fc924f7ef94: 4849 bbb0 | 4c04 c0c8 | 7f00 004d | 3bd3 0f84 | 8400 0000 | 488b e8eb | 33eb 04eb | 02eb 0044 
+  0x00007fc924f7efb4: ;   {metadata('com/esotericsoftware/kryo/KryoException')}
+  0x00007fc924f7efb4: 8b58 0841 | 81fb 1017 | 1201 0f85 | f8fe ffff | 488b d048 | 8b74 2418 | 488b 2c24 
+
+  0x00007fc924f7efd0: ;   {optimized virtual_call}
+  0x00007fc924f7efd0: 6666 90e8 
+
+  0x00007fc924f7efd4: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [16]=Oop [24]=Oop }
+                      ;*invokespecial maybeEndOfStream {reexecute=0 rethrow=0 return_oop=1}
+                      ; - org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@12 (line 135)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7efd4: a8a0 a0ff | 4885 c074 | 0f48 8be8 | be34 0000 
+
+  0x00007fc924f7efe4: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7efe4: 0066 90e8 
+
+  0x00007fc924f7efe8: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@117 (line 94)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7efe8: 14f6 a0ff | bef6 ffff | ff4c 8b54 | 2408 4c89 | 1424 4c8b | 5424 104c | 8954 2408 
+
+  0x00007fc924f7f004: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f004: 6666 90e8 
+
+  0x00007fc924f7f008: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop [24]=Oop }
+                      ;*athrow {reexecute=1 rethrow=0 return_oop=0}
+                      ; - (reexecute) org.gradle.internal.serialize.kryo.KryoBackedDecoder::readSmallInt@15 (line 135)
+                      ; - org.gradle.internal.serialize.DefaultSerializerRegistry$TaggedTypeSerializer::read@1 (line 159)
+                      ; - org.gradle.internal.serialize.Serializers$StatefulSerializerAdapter$1::read@11 (line 36)
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@4 (line 81)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7f008: f4f5 a0ff | 488b e8be | 2d00 0000 
+
+  0x00007fc924f7f014: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f014: 6666 90e8 
+
+  0x00007fc924f7f018: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@39 (line 88)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7f018: e4f5 a0ff | 488b e8be | 2d00 0000 
+
+  0x00007fc924f7f024: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f024: 6666 90e8 
+
+  0x00007fc924f7f028: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@65 (line 90)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7f028: d4f5 a0ff | 488b e8be | 2d00 0000 
+
+  0x00007fc924f7f034: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f034: 6666 90e8 
+
+  0x00007fc924f7f038: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.remote.internal.inet.SocketConnection::receive@91 (line 92)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@4 (line 77)
+  0x00007fc924f7f038: c4f5 a0ff | 488b f0e9 | a300 0000 | 488b f0e9 | 9b00 0000 | 448b 5808 | eb0a 448b | 5808 eb04 
+  0x00007fc924f7f058: 448b 5808 
+
+  0x00007fc924f7f05c: ;   {metadata('org/gradle/internal/remote/internal/MessageIOException')}
+  0x00007fc924f7f05c: 49ba 6015 | 13c0 c87f | 0000 49b8 | 0000 00bf | c87f 0000 | 4d03 c34d | 8b58 504d | 3bda 7568 
+  0x00007fc924f7f07c: 4c8b d04c | 8954 2408 
+
+  0x00007fc924f7f084: ;   {oop("Problem receiving message to the daemon. Performing 'on failure' operation..."{0x00000000d6801260})}
+  0x00007fc924f7f084: 48ba 6012 | 80d6 0000 
+
+  0x00007fc924f7f08c: ;   {oop(a 'org/gradle/internal/logging/slf4j/OutputEventListenerBackedLogger'{0x00000000d6801248})}
+  0x00007fc924f7f08c: 0000 48be | 4812 80d6 | 0000 0000 | 488b 2c24 
+
+  0x00007fc924f7f09c: ;   {optimized virtual_call}
+  0x00007fc924f7f09c: 6666 90e8 
+
+  0x00007fc924f7f0a0: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokespecial debug {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger::debug@2 (line 25)
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@26 (line 79)
+  0x00007fc924f7f0a0: dc9f a0ff | 440f b65d | 0c45 85db | 7526 8b6d | 1844 8b5d 
+
+  0x00007fc924f7f0b4: ;   {metadata('org/gradle/launcher/daemon/client/DefaultDaemonConnector$CleanupOnStaleAddress')}
+  0x00007fc924f7f0b4: 0841 81fb | b82a 1301 | 753c 488b | f548 8b54 | 2408 488b 
+
+  0x00007fc924f7f0c8: ;   {optimized virtual_call}
+  0x00007fc924f7f0c8: 2c24 90e8 
+
+  0x00007fc924f7f0cc: ; ImmutableOopMap {rbp=Oop [0]=Oop [8]=Oop }
+                      ;*invokeinterface maybeStaleAddress {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@43 (line 80)
+  0x00007fc924f7f0cc: b09f a0ff | 85c0 7530 | be1b 0000 | 0048 8b2c 
+
+  0x00007fc924f7f0dc: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f0dc: 2466 90e8 
+
+  0x00007fc924f7f0e0: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@62 (line 83)
+  0x00007fc924f7f0e0: 1cf5 a0ff | 488b f04c | 8b14 2441 | c642 0c01 | 4883 c450 
+
+  0x00007fc924f7f0f4: ;   {runtime_call _rethrow_Java}
+  0x00007fc924f7f0f4: 5de9 061d | abff bedf 
+
+  0x00007fc924f7f0fc: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f0fc: ffff ffe8 
+
+  0x00007fc924f7f100: ; ImmutableOopMap {rbp=NarrowOop [0]=Oop [8]=Oop }
+                      ;*invokeinterface maybeStaleAddress {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@43 (line 80)
+  0x00007fc924f7f100: fcf4 a0ff | be18 0000 
+
+  0x00007fc924f7f108: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f108: 0066 90e8 
+
+  0x00007fc924f7f10c: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@51 (line 81)
+  0x00007fc924f7f10c: f0f4 a0ff | bef6 ffff | ff48 8b2c 
+
+  0x00007fc924f7f118: ;   {runtime_call UncommonTrapBlob}
+  0x00007fc924f7f118: 2466 90e8 
+
+  0x00007fc924f7f11c: ; ImmutableOopMap {rbp=Oop [8]=Oop }
+                      ;*invokeinterface maybeStaleAddress {reexecute=0 rethrow=0 return_oop=0}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@43 (line 80)
+  0x00007fc924f7f11c: e0f4 a0ff 
+
+  0x00007fc924f7f120: ;   {internal_word}
+  0x00007fc924f7f120: 49ba 7be7 | f724 c97f | 0000 4d89 | 9758 0300 
+
+  0x00007fc924f7f130: ;   {runtime_call SafepointBlob}
+  0x00007fc924f7f130: 00e9 4a01 | a1ff f4f4 | f4f4 f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x00007fc924f7f140: ;   {no_reloc}
+  0x00007fc924f7f140: 48bb 0000 | 0000 0000 
+
+  0x00007fc924f7f148: ;   {runtime_call}
+  0x00007fc924f7f148: 0000 e9fb 
+
+  0x00007fc924f7f14c: ;   {static_stub}
+  0x00007fc924f7f14c: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x00007fc924f7f158: ;   {runtime_call}
+  0x00007fc924f7f158: 00e9 fbff 
+
+  0x00007fc924f7f15c: ;   {static_stub}
+  0x00007fc924f7f15c: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x00007fc924f7f168: ;   {runtime_call}
+  0x00007fc924f7f168: e9fb ffff 
+
+  0x00007fc924f7f16c: ;   {static_stub}
+  0x00007fc924f7f16c: ff48 bb00 | 0000 0000 
+
+  0x00007fc924f7f174: ;   {runtime_call}
+  0x00007fc924f7f174: 0000 00e9 | fbff ffff 
+
+  0x00007fc924f7f17c: ;   {static_stub}
+  0x00007fc924f7f17c: 48bb 0000 | 0000 0000 
+
+  0x00007fc924f7f184: ;   {runtime_call}
+  0x00007fc924f7f184: 0000 e9fb 
+
+  0x00007fc924f7f188: ;   {static_stub}
+  0x00007fc924f7f188: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x00007fc924f7f194: ;   {runtime_call}
+  0x00007fc924f7f194: 00e9 fbff 
+
+  0x00007fc924f7f198: ;   {static_stub}
+  0x00007fc924f7f198: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x00007fc924f7f1a4: ;   {runtime_call}
+  0x00007fc924f7f1a4: e9fb ffff 
+
+  0x00007fc924f7f1a8: ;   {static_stub}
+  0x00007fc924f7f1a8: ff48 bb00 | 0000 0000 
+
+  0x00007fc924f7f1b0: ;   {runtime_call}
+  0x00007fc924f7f1b0: 0000 00e9 | fbff ffff 
+
+  0x00007fc924f7f1b8: ;   {static_stub}
+  0x00007fc924f7f1b8: 48bb 0000 | 0000 0000 
+
+  0x00007fc924f7f1c0: ;   {runtime_call}
+  0x00007fc924f7f1c0: 0000 e9fb 
+
+  0x00007fc924f7f1c4: ;   {runtime_call ExceptionBlob}
+  0x00007fc924f7f1c4: ffff ffe9 | b4cf a1ff 
+[Deopt Handler Code]
+  0x00007fc924f7f1cc: e800 0000 | 0048 832c 
+
+  0x00007fc924f7f1d4: ;   {runtime_call DeoptimizationBlob}
+  0x00007fc924f7f1d4: 2405 e9c5 | f9a0 fff4 | f4f4 f4f4 
+[/MachCode]
+
+
+Compiled method (c2) 1001320 1829       4       org.gradle.launcher.daemon.client.DaemonClientConnection::receive (5 bytes)
+ total in heap  [0x00007fc924fa0e10,0x00007fc924fa10c8] = 696
+ relocation     [0x00007fc924fa0f70,0x00007fc924fa0f90] = 32
+ main code      [0x00007fc924fa0fa0,0x00007fc924fa1020] = 128
+ stub code      [0x00007fc924fa1020,0x00007fc924fa1048] = 40
+ oops           [0x00007fc924fa1048,0x00007fc924fa1050] = 8
+ metadata       [0x00007fc924fa1050,0x00007fc924fa1068] = 24
+ scopes data    [0x00007fc924fa1068,0x00007fc924fa1078] = 16
+ scopes pcs     [0x00007fc924fa1078,0x00007fc924fa10a8] = 48
+ dependencies   [0x00007fc924fa10a8,0x00007fc924fa10b0] = 8
+ handler table  [0x00007fc924fa10b0,0x00007fc924fa10c8] = 24
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x00007fc9048378e0} 'receive' '()Ljava/lang/Object;' in 'org/gradle/launcher/daemon/client/DaemonClientConnection'
+  #           [sp+0x20]  (sp of caller)
+  0x00007fc924fa0fa0: 448b 5608 | 49bb 0000 | 00bf c87f | 0000 4d03 | d349 3bc2 
+
+  0x00007fc924fa0fb4: ;   {runtime_call ic_miss_stub}
+  0x00007fc924fa0fb4: 0f85 c67d | 9eff 6690 | 0f1f 4000 
+[Verified Entry Point]
+  0x00007fc924fa0fc0: 8984 2400 | c0fe ff55 | 4883 ec10 
+
+  0x00007fc924fa0fcc: ;   {optimized virtual_call}
+  0x00007fc924fa0fcc: 6666 90e8 
+
+  0x00007fc924fa0fd0: ; ImmutableOopMap {}
+                      ;*invokevirtual receive {reexecute=0 rethrow=0 return_oop=1}
+                      ; - org.gradle.launcher.daemon.client.DaemonClientConnection::receive@1 (line 35)
+  0x00007fc924fa0fd0: 6cd6 fdff | 4883 c410 
+
+  0x00007fc924fa0fd8: ;   {poll_return}
+  0x00007fc924fa0fd8: 5d49 3ba7 | 4003 0000 | 0f87 0e00 | 0000 c348 | 8bf0 4883 
+
+  0x00007fc924fa0fec: ;   {runtime_call _rethrow_Java}
+  0x00007fc924fa0fec: c410 5de9 | 0cfe a8ff 
+
+  0x00007fc924fa0ff4: ;   {internal_word}
+  0x00007fc924fa0ff4: 49ba d90f | fa24 c97f | 0000 4d89 | 9758 0300 
+
+  0x00007fc924fa1004: ;   {runtime_call SafepointBlob}
+  0x00007fc924fa1004: 00e9 76e2 | 9eff f4f4 | f4f4 f4f4 | f4f4 f4f4 | f4f4 f4f4 | f4f4 f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x00007fc924fa1020: ;   {no_reloc}
+  0x00007fc924fa1020: 48bb 0000 | 0000 0000 
+
+  0x00007fc924fa1028: ;   {runtime_call}
+  0x00007fc924fa1028: 0000 e9fb 
+
+  0x00007fc924fa102c: ;   {runtime_call ExceptionBlob}
+  0x00007fc924fa102c: ffff ffe9 | 4cb1 9fff 
+[Deopt Handler Code]
+  0x00007fc924fa1034: e800 0000 | 0048 832c 
+
+  0x00007fc924fa103c: ;   {runtime_call DeoptimizationBlob}
+  0x00007fc924fa103c: 2405 e95d | db9e fff4 | f4f4 f4f4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007fc93473f970, length=15, elements={
+0x00007fc9340183b0, 0x00007fc9340a2f10, 0x00007fc9340a42f0, 0x00007fc9340a99e0,
+0x00007fc9340aad90, 0x00007fc9340ac1a0, 0x00007fc9340adb50, 0x00007fc9340af080,
+0x00007fc9340b04f0, 0x00007fc9340ed710, 0x00007fc9340ef650, 0x00007fc9348049b0,
+0x00007fc8ac00a250, 0x00007fc93473e470, 0x00007fc93473edb0
+}
+
+Java Threads: ( => current thread )
+=>0x00007fc9340183b0 JavaThread "main" [_thread_in_vm, id=13574, stack(0x00007fc93a700000,0x00007fc93a800000)]
+  0x00007fc9340a2f10 JavaThread "Reference Handler" daemon [_thread_blocked, id=13581, stack(0x00007fc91d0ad000,0x00007fc91d1ad000)]
+  0x00007fc9340a42f0 JavaThread "Finalizer" daemon [_thread_blocked, id=13582, stack(0x00007fc91cfad000,0x00007fc91d0ad000)]
+  0x00007fc9340a99e0 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=13583, stack(0x00007fc91cb00000,0x00007fc91cc00000)]
+  0x00007fc9340aad90 JavaThread "Service Thread" daemon [_thread_blocked, id=13584, stack(0x00007fc91ca00000,0x00007fc91cb00000)]
+  0x00007fc9340ac1a0 JavaThread "Monitor Deflation Thread" daemon [_thread_blocked, id=13585, stack(0x00007fc91c900000,0x00007fc91ca00000)]
+  0x00007fc9340adb50 JavaThread "C2 CompilerThread0" daemon [_thread_in_vm, id=13586, stack(0x00007fc91c800000,0x00007fc91c900000)]
+  0x00007fc9340af080 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=13587, stack(0x00007fc91c700000,0x00007fc91c800000)]
+  0x00007fc9340b04f0 JavaThread "Sweeper thread" daemon [_thread_blocked, id=13588, stack(0x00007fc91c600000,0x00007fc91c700000)]
+  0x00007fc9340ed710 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=13589, stack(0x00007fc91c500000,0x00007fc91c600000)]
+  0x00007fc9340ef650 JavaThread "Notification Thread" daemon [_thread_blocked, id=13590, stack(0x00007fc91c400000,0x00007fc91c500000)]
+  0x00007fc9348049b0 JavaThread "pool-1-thread-1" [_thread_in_vm, id=13593, stack(0x00007fc91c0fe000,0x00007fc91c1fe000)]
+  0x00007fc8ac00a250 JavaThread "process reaper (pid 13595)" daemon [_thread_in_native, id=13602, stack(0x00007fc91cf58000,0x00007fc91cf7a000)]
+  0x00007fc93473e470 JavaThread "DisconnectableInputStream source reader" daemon [_thread_in_native, id=13625, stack(0x00007fc90df00000,0x00007fc90e000000)]
+  0x00007fc93473edb0 JavaThread "Forward input" [_thread_blocked, id=13626, stack(0x00007fc90d700000,0x00007fc90d800000)]
+
+Other Threads:
+  0x00007fc93409eea0 VMThread "VM Thread" [stack: 0x00007fc91d1ae000,0x00007fc91d2ae000] [id=13580] _threads_hazard_ptr=0x00007fc93473f970
+  0x00007fc9340f0f90 WatcherThread [stack: 0x00007fc91c300000,0x00007fc91c400000] [id=13591]
+  0x00007fc93404b820 GCTaskThread "GC Thread#0" [stack: 0x00007fc93857a000,0x00007fc93867a000] [id=13575]
+  0x00007fc8b8004990 GCTaskThread "GC Thread#1" [stack: 0x00007fc91c1ff000,0x00007fc91c2ff000] [id=13592]
+  0x00007fc934052480 ConcurrentGCThread "G1 Main Marker" [stack: 0x00007fc938479000,0x00007fc938579000] [id=13576]
+  0x00007fc9340533f0 ConcurrentGCThread "G1 Conc#0" [stack: 0x00007fc938378000,0x00007fc938478000] [id=13577]
+  0x00007fc934079fa0 ConcurrentGCThread "G1 Refine#0" [stack: 0x00007fc938075000,0x00007fc938175000] [id=13578]
+  0x00007fc93407aea0 ConcurrentGCThread "G1 Service" [stack: 0x00007fc933f00000,0x00007fc934000000] [id=13579]
+
+Threads with active compile tasks:
+C2 CompilerThread0  1001335 1874       4       org.gradle.internal.logging.sink.GroupingProgressLogEventGenerator$OperationGroup::flushOutput (197 bytes)
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fc934015d10] Heap_lock - owner thread: 0x00007fc9348049b0
+[0x00007fc934015fd0] CompileStatistics_lock - owner thread: 0x00007fc9340adb50
+[0x00007fc934016980] PeriodicTask_lock - owner thread: 0x00007fc9340f0f90
+
+Heap address: 0x00000000d4c00000, size: 692 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x00007fc8bf000000-0x00007fc8bfbc7000-0x00007fc8bfbc7000), size 12349440, SharedBaseAddress: 0x00007fc8bf000000, ArchiveRelocationMode: 1.
+Compressed class space mapped at: 0x00007fc8c0000000-0x00007fc900000000, reserved size: 1073741824
+Narrow klass base: 0x00007fc8bf000000, Narrow klass shift: 0, Narrow klass range: 0x100000000
+
+GC Precious Log:
+ CPUs: 2 total, 2 available
+ Memory: 2760M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (32-bit)
+ Heap Region Size: 1M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 44M
+ Heap Max Capacity: 692M
+ Pre-touch: Disabled
+ Parallel Workers: 2
+ Concurrent Workers: 1
+ Concurrent Refinement Workers: 2
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total 47104K, used 30699K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 20 young (20480K), 2 survivors (2048K)
+ Metaspace       used 9834K, committed 10048K, reserved 1114112K
+  class space    used 1273K, committed 1408K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
+|   0|0x00000000d4c00000, 0x00000000d4d00000, 0x00000000d4d00000|100%| O|  |TAMS 0x00000000d4c00000, 0x00000000d4c00000| Untracked 
+|   1|0x00000000d4d00000, 0x00000000d4e00000, 0x00000000d4e00000|100%| O|  |TAMS 0x00000000d4d00000, 0x00000000d4d00000| Untracked 
+|   2|0x00000000d4e00000, 0x00000000d4f00000, 0x00000000d4f00000|100%| O|  |TAMS 0x00000000d4e00000, 0x00000000d4e00000| Untracked 
+|   3|0x00000000d4f00000, 0x00000000d5000000, 0x00000000d5000000|100%|HS|  |TAMS 0x00000000d4f00000, 0x00000000d4f00000| Complete 
+|   4|0x00000000d5000000, 0x00000000d5100000, 0x00000000d5100000|100%|HC|  |TAMS 0x00000000d5000000, 0x00000000d5000000| Complete 
+|   5|0x00000000d5100000, 0x00000000d5200000, 0x00000000d5200000|100%|HC|  |TAMS 0x00000000d5100000, 0x00000000d5100000| Complete 
+|   6|0x00000000d5200000, 0x00000000d5300000, 0x00000000d5300000|100%|HC|  |TAMS 0x00000000d5200000, 0x00000000d5200000| Complete 
+|   7|0x00000000d5300000, 0x00000000d5400000, 0x00000000d5400000|100%| O|  |TAMS 0x00000000d5300000, 0x00000000d5300000| Untracked 
+|   8|0x00000000d5400000, 0x00000000d5500000, 0x00000000d5500000|100%| O|  |TAMS 0x00000000d5400000, 0x00000000d5400000| Untracked 
+|   9|0x00000000d5500000, 0x00000000d5600000, 0x00000000d5600000|100%| O|  |TAMS 0x00000000d5500000, 0x00000000d5500000| Untracked 
+|  10|0x00000000d5600000, 0x00000000d5600000, 0x00000000d5700000|  0%| F|  |TAMS 0x00000000d5600000, 0x00000000d5600000| Untracked 
+|  11|0x00000000d5700000, 0x00000000d5700000, 0x00000000d5800000|  0%| F|  |TAMS 0x00000000d5700000, 0x00000000d5700000| Untracked 
+|  12|0x00000000d5800000, 0x00000000d5800000, 0x00000000d5900000|  0%| F|  |TAMS 0x00000000d5800000, 0x00000000d5800000| Untracked 
+|  13|0x00000000d5900000, 0x00000000d5900000, 0x00000000d5a00000|  0%| F|  |TAMS 0x00000000d5900000, 0x00000000d5900000| Untracked 
+|  14|0x00000000d5a00000, 0x00000000d5a00000, 0x00000000d5b00000|  0%| F|  |TAMS 0x00000000d5a00000, 0x00000000d5a00000| Untracked 
+|  15|0x00000000d5b00000, 0x00000000d5b00000, 0x00000000d5c00000|  0%| F|  |TAMS 0x00000000d5b00000, 0x00000000d5b00000| Untracked 
+|  16|0x00000000d5c00000, 0x00000000d5c00000, 0x00000000d5d00000|  0%| F|  |TAMS 0x00000000d5c00000, 0x00000000d5c00000| Untracked 
+|  17|0x00000000d5d00000, 0x00000000d5d00000, 0x00000000d5e00000|  0%| F|  |TAMS 0x00000000d5d00000, 0x00000000d5d00000| Untracked 
+|  18|0x00000000d5e00000, 0x00000000d5e00000, 0x00000000d5f00000|  0%| F|  |TAMS 0x00000000d5e00000, 0x00000000d5e00000| Untracked 
+|  19|0x00000000d5f00000, 0x00000000d5f00000, 0x00000000d6000000|  0%| F|  |TAMS 0x00000000d5f00000, 0x00000000d5f00000| Untracked 
+|  20|0x00000000d6000000, 0x00000000d6000000, 0x00000000d6100000|  0%| F|  |TAMS 0x00000000d6000000, 0x00000000d6000000| Untracked 
+|  21|0x00000000d6100000, 0x00000000d6100000, 0x00000000d6200000|  0%| F|  |TAMS 0x00000000d6100000, 0x00000000d6100000| Untracked 
+|  22|0x00000000d6200000, 0x00000000d6200000, 0x00000000d6300000|  0%| F|  |TAMS 0x00000000d6200000, 0x00000000d6200000| Untracked 
+|  23|0x00000000d6300000, 0x00000000d6300000, 0x00000000d6400000|  0%| F|  |TAMS 0x00000000d6300000, 0x00000000d6300000| Untracked 
+|  24|0x00000000d6400000, 0x00000000d6500000, 0x00000000d6500000|100%| E|CS|TAMS 0x00000000d6400000, 0x00000000d6400000| Complete 
+|  25|0x00000000d6500000, 0x00000000d6600000, 0x00000000d6600000|100%| E|CS|TAMS 0x00000000d6500000, 0x00000000d6500000| Complete 
+|  26|0x00000000d6600000, 0x00000000d6700000, 0x00000000d6700000|100%| E|CS|TAMS 0x00000000d6600000, 0x00000000d6600000| Complete 
+|  27|0x00000000d6700000, 0x00000000d670df90, 0x00000000d6800000|  5%| S|CS|TAMS 0x00000000d6700000, 0x00000000d6700000| Complete 
+|  28|0x00000000d6800000, 0x00000000d6900000, 0x00000000d6900000|100%| S|CS|TAMS 0x00000000d6800000, 0x00000000d6800000| Complete 
+|  29|0x00000000d6900000, 0x00000000d6a00000, 0x00000000d6a00000|100%| E|CS|TAMS 0x00000000d6900000, 0x00000000d6900000| Complete 
+|  30|0x00000000d6a00000, 0x00000000d6b00000, 0x00000000d6b00000|100%| E|CS|TAMS 0x00000000d6a00000, 0x00000000d6a00000| Complete 
+|  31|0x00000000d6b00000, 0x00000000d6c00000, 0x00000000d6c00000|100%| E|CS|TAMS 0x00000000d6b00000, 0x00000000d6b00000| Complete 
+|  32|0x00000000d6c00000, 0x00000000d6d00000, 0x00000000d6d00000|100%| E|CS|TAMS 0x00000000d6c00000, 0x00000000d6c00000| Complete 
+|  33|0x00000000d6d00000, 0x00000000d6e00000, 0x00000000d6e00000|100%| E|CS|TAMS 0x00000000d6d00000, 0x00000000d6d00000| Complete 
+|  34|0x00000000d6e00000, 0x00000000d6f00000, 0x00000000d6f00000|100%| E|CS|TAMS 0x00000000d6e00000, 0x00000000d6e00000| Complete 
+|  35|0x00000000d6f00000, 0x00000000d7000000, 0x00000000d7000000|100%| E|CS|TAMS 0x00000000d6f00000, 0x00000000d6f00000| Complete 
+|  36|0x00000000d7000000, 0x00000000d7100000, 0x00000000d7100000|100%| E|CS|TAMS 0x00000000d7000000, 0x00000000d7000000| Complete 
+|  37|0x00000000d7100000, 0x00000000d7200000, 0x00000000d7200000|100%| E|CS|TAMS 0x00000000d7100000, 0x00000000d7100000| Complete 
+|  38|0x00000000d7200000, 0x00000000d7300000, 0x00000000d7300000|100%| E|CS|TAMS 0x00000000d7200000, 0x00000000d7200000| Complete 
+|  39|0x00000000d7300000, 0x00000000d7400000, 0x00000000d7400000|100%| E|CS|TAMS 0x00000000d7300000, 0x00000000d7300000| Complete 
+|  40|0x00000000d7400000, 0x00000000d7500000, 0x00000000d7500000|100%| E|CS|TAMS 0x00000000d7400000, 0x00000000d7400000| Complete 
+|  41|0x00000000d7500000, 0x00000000d7600000, 0x00000000d7600000|100%| E|CS|TAMS 0x00000000d7500000, 0x00000000d7500000| Complete 
+|  42|0x00000000d7600000, 0x00000000d7700000, 0x00000000d7700000|100%| E|CS|TAMS 0x00000000d7600000, 0x00000000d7600000| Complete 
+|  43|0x00000000d7700000, 0x00000000d7800000, 0x00000000d7800000|100%| E|CS|TAMS 0x00000000d7700000, 0x00000000d7700000| Complete 
+| 690|0x00000000ffe00000, 0x00000000ffe75000, 0x00000000fff00000| 45%|OA|  |TAMS 0x00000000ffe00000, 0x00000000ffe00000| Untracked 
+| 691|0x00000000fff00000, 0x00000000fff78000, 0x0000000100000000| 46%|CA|  |TAMS 0x00000000fff00000, 0x00000000fff00000| Untracked 
+
+Card table byte_map: [0x00007fc939d74000,0x00007fc939ece000] _byte_map_base: 0x00007fc9396ce000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0x00007fc93404c2b0, (CMBitMap*) 0x00007fc93404c2f0
+ Prev Bits: [0x00007fc93914a000, 0x00007fc939c1a000)
+ Next Bits: [0x00007fc93867a000, 0x00007fc93914a000)
+
+Polling page: 0x00007fc93bbc3000
+
+Metaspace:
+
+Usage:
+  Non-class:      8.36 MB used.
+      Class:      1.24 MB used.
+       Both:      9.60 MB used.
+
+Virtual space:
+  Non-class space:       64.00 MB reserved,       8.44 MB ( 13%) committed,  1 nodes.
+      Class space:        1.00 GB reserved,       1.38 MB ( <1%) committed,  1 nodes.
+             Both:        1.06 GB reserved,       9.81 MB ( <1%) committed. 
+
+Chunk freelists:
+   Non-Class:  7.44 MB
+       Class:  14.61 MB
+        Both:  22.04 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 21.00 MB
+CDS: on
+MetaspaceReclaimPolicy: balanced
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - new_chunks_are_fully_committed: 0.
+ - uncommit_free_chunks: 1.
+ - use_allocation_guard: 0.
+ - handle_deallocations: 1.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 0.
+num_arena_births: 86.
+num_arena_deaths: 0.
+num_vsnodes_births: 2.
+num_vsnodes_deaths: 0.
+num_space_committed: 157.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 0.
+num_chunks_taken_from_freelist: 338.
+num_chunk_merges: 0.
+num_chunk_splits: 238.
+num_chunks_enlarged: 202.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120036Kb used=1007Kb max_used=1007Kb free=119028Kb
+ bounds [0x00007fc924ec7000, 0x00007fc925137000, 0x00007fc92c400000]
+CodeHeap 'profiled nmethods': size=120032Kb used=3153Kb max_used=3153Kb free=116879Kb
+ bounds [0x00007fc91d400000, 0x00007fc91d720000, 0x00007fc924938000]
+CodeHeap 'non-nmethods': size=5692Kb used=1166Kb max_used=1204Kb free=4525Kb
+ bounds [0x00007fc924938000, 0x00007fc924ba8000, 0x00007fc924ec7000]
+ total_blobs=2320 nmethods=1851 adapters=384
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 845.149 Thread 0x00007fc9340adb50 1864       4       com.esotericsoftware.kryo.io.Input::readUtf8Length (139 bytes)
+Event: 845.151 Thread 0x00007fc9340adb50 nmethod 1864 0x00007fc924fbc290 code [0x00007fc924fbc420, 0x00007fc924fbc538]
+Event: 845.573 Thread 0x00007fc9340adb50 1865       4       java.util.HashMap::afterNodeRemoval (1 bytes)
+Event: 845.576 Thread 0x00007fc9340adb50 nmethod 1865 0x00007fc924fbc610 code [0x00007fc924fbc780, 0x00007fc924fbc7f8]
+Event: 847.025 Thread 0x00007fc9340af080 1866       3       com.esotericsoftware.kryo.io.Input::readUtf8 (90 bytes)
+Event: 847.027 Thread 0x00007fc9340af080 nmethod 1866 0x00007fc91d70b310 code [0x00007fc91d70b4e0, 0x00007fc91d70b8b0]
+Event: 848.110 Thread 0x00007fc9340adb50 1867       4       com.esotericsoftware.kryo.io.Input::readUtf8 (90 bytes)
+Event: 848.148 Thread 0x00007fc9340adb50 nmethod 1867 0x00007fc924fbc910 code [0x00007fc924fbcac0, 0x00007fc924fbd128]
+Event: 852.354 Thread 0x00007fc9340adb50 1868       4       com.esotericsoftware.kryo.io.Input::readString (127 bytes)
+Event: 852.447 Thread 0x00007fc9340adb50 nmethod 1868 0x00007fc924fbd510 code [0x00007fc924fbd740, 0x00007fc924fbe860]
+Event: 862.776 Thread 0x00007fc9340af080 1869 % !   3       org.gradle.launcher.daemon.client.DaemonClient::monitorBuild @ 43 (248 bytes)
+Event: 862.782 Thread 0x00007fc9340af080 nmethod 1869% 0x00007fc91d70ba90 code [0x00007fc91d70bf00, 0x00007fc91d70eb10]
+Event: 868.796 Thread 0x00007fc9340af080 1870   !   3       org.gradle.launcher.daemon.client.DaemonClient::monitorBuild (248 bytes)
+Event: 868.800 Thread 0x00007fc9340af080 nmethod 1870 0x00007fc91d70fa10 code [0x00007fc91d70fe80, 0x00007fc91d712750]
+Event: 870.072 Thread 0x00007fc9340adb50 1871       4       java.nio.CharBuffer::arrayOffset (35 bytes)
+Event: 870.073 Thread 0x00007fc9340adb50 nmethod 1871 0x00007fc924fbf310 code [0x00007fc924fbf4a0, 0x00007fc924fbf558]
+Event: 883.668 Thread 0x00007fc9340adb50 1872       4       java.util.HashMap::putVal (300 bytes)
+Event: 883.843 Thread 0x00007fc9340adb50 nmethod 1872 0x00007fc924fbf610 code [0x00007fc924fbf860, 0x00007fc924fc1ce8]
+Event: 888.742 Thread 0x00007fc9340af080 1873       3       com.esotericsoftware.kryo.io.Input::readLong_slow (361 bytes)
+Event: 888.760 Thread 0x00007fc9340af080 nmethod 1873 0x00007fc91d713610 code [0x00007fc91d713860, 0x00007fc91d7140f0]
+
+GC Heap History (10 events):
+Event: 3.678 GC heap before
+{Heap before GC invocations=0 (full 0):
+ garbage-first heap   total 47104K, used 6068K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 6 young (6144K), 0 survivors (0K)
+ Metaspace       used 1674K, committed 1728K, reserved 1114112K
+  class space    used 173K, committed 192K, reserved 1048576K
+}
+Event: 3.700 GC heap after
+{Heap after GC invocations=1 (full 0):
+ garbage-first heap   total 47104K, used 2221K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 1674K, committed 1728K, reserved 1114112K
+  class space    used 173K, committed 192K, reserved 1048576K
+}
+Event: 4.653 GC heap before
+{Heap before GC invocations=1 (full 0):
+ garbage-first heap   total 47104K, used 7341K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 7 young (7168K), 1 survivors (1024K)
+ Metaspace       used 1855K, committed 2048K, reserved 1114112K
+  class space    used 183K, committed 256K, reserved 1048576K
+}
+Event: 4.680 GC heap after
+{Heap after GC invocations=2 (full 0):
+ garbage-first heap   total 47104K, used 4298K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 1855K, committed 2048K, reserved 1114112K
+  class space    used 183K, committed 256K, reserved 1048576K
+}
+Event: 7.798 GC heap before
+{Heap before GC invocations=2 (full 0):
+ garbage-first heap   total 47104K, used 19658K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 13 young (13312K), 1 survivors (1024K)
+ Metaspace       used 4656K, committed 4800K, reserved 1114112K
+  class space    used 604K, committed 704K, reserved 1048576K
+}
+Event: 7.830 GC heap after
+{Heap after GC invocations=3 (full 0):
+ garbage-first heap   total 47104K, used 11367K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 2 young (2048K), 2 survivors (2048K)
+ Metaspace       used 4656K, committed 4800K, reserved 1114112K
+  class space    used 604K, committed 704K, reserved 1048576K
+}
+Event: 9.949 GC heap before
+{Heap before GC invocations=3 (full 0):
+ garbage-first heap   total 47104K, used 22631K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 14 young (14336K), 2 survivors (2048K)
+ Metaspace       used 7410K, committed 7616K, reserved 1114112K
+  class space    used 1015K, committed 1088K, reserved 1048576K
+}
+Event: 9.974 GC heap after
+{Heap after GC invocations=4 (full 0):
+ garbage-first heap   total 47104K, used 11868K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 7410K, committed 7616K, reserved 1114112K
+  class space    used 1015K, committed 1088K, reserved 1048576K
+}
+Event: 506.467 GC heap before
+{Heap before GC invocations=4 (full 0):
+ garbage-first heap   total 47104K, used 26204K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 15 young (15360K), 1 survivors (1024K)
+ Metaspace       used 9809K, committed 10048K, reserved 1114112K
+  class space    used 1272K, committed 1408K, reserved 1048576K
+}
+Event: 506.500 GC heap after
+{Heap after GC invocations=5 (full 0):
+ garbage-first heap   total 47104K, used 12267K [0x00000000d4c00000, 0x0000000100000000)
+  region size 1024K, 2 young (2048K), 2 survivors (2048K)
+ Metaspace       used 9809K, committed 10048K, reserved 1114112K
+  class space    used 1272K, committed 1408K, reserved 1048576K
+}
+
+Dll operation events (14 events):
+Event: 0.009 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+Event: 0.532 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+Event: 0.782 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+Event: 0.794 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+Event: 1.168 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+Event: 2.860 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+Event: 4.851 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+Event: 7.483 Loaded shared library /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64/libnative-platform.so
+Event: 7.550 Loading shared library /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses5/libnative-platform-curses.so failed, libtinfo.so.5: cannot open shared object file: No such file or directory
+Event: 7.554 Loaded shared library /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses6/libnative-platform-curses.so
+Event: 7.651 Loaded shared library /home/anafibnshahibul/.gradle/native/jansi/1.18/linux64/libjansi.so
+Event: 8.795 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+Event: 8.802 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+Event: 24.616 Loaded shared library /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+
+Deoptimization events (20 events):
+Event: 31.256 Thread 0x00007fc9340183b0 DEOPT PACKING pc=0x00007fc924f3a820 sp=0x00007fc93a7fc280
+Event: 31.256 Thread 0x00007fc9340183b0 DEOPT UNPACKING pc=0x00007fc92498e693 sp=0x00007fc93a7fc228 mode 2
+Event: 451.967 Thread 0x00007fc9348049b0 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00007fc924f4243c relative=0x00000000000003fc
+Event: 451.967 Thread 0x00007fc9348049b0 Uncommon trap: reason=bimorphic_or_optimized_type_check action=maybe_recompile pc=0x00007fc924f4243c method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$Node; @ 128 c2
+Event: 451.967 Thread 0x00007fc9348049b0 DEOPT PACKING pc=0x00007fc924f4243c sp=0x00007fc91c1fc170
+Event: 451.967 Thread 0x00007fc9348049b0 DEOPT UNPACKING pc=0x00007fc92498e693 sp=0x00007fc91c1fc0a8 mode 2
+Event: 453.368 Thread 0x00007fc9348049b0 Uncommon trap: trap_request=0xffffffc6 fr.pc=0x00007fc924f4243c relative=0x00000000000003fc
+Event: 453.368 Thread 0x00007fc9348049b0 Uncommon trap: reason=bimorphic_or_optimized_type_check action=maybe_recompile pc=0x00007fc924f4243c method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$Node; @ 128 c2
+Event: 453.368 Thread 0x00007fc9348049b0 DEOPT PACKING pc=0x00007fc924f4243c sp=0x00007fc91c1fc170
+Event: 453.368 Thread 0x00007fc9348049b0 DEOPT UNPACKING pc=0x00007fc92498e693 sp=0x00007fc91c1fc0a8 mode 2
+Event: 483.169 Thread 0x00007fc9348049b0 DEOPT PACKING pc=0x00007fc91d68147a sp=0x00007fc91c1fc1f0
+Event: 483.169 Thread 0x00007fc9348049b0 DEOPT UNPACKING pc=0x00007fc92498ee10 sp=0x00007fc91c1fb680 mode 0
+Event: 842.593 Thread 0x00007fc9340183b0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x00007fc924f79718 relative=0x0000000000000c58
+Event: 842.593 Thread 0x00007fc9340183b0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fc924f79718 method=com.esotericsoftware.kryo.io.Input.readUtf8(I)V @ 79 c2
+Event: 842.593 Thread 0x00007fc9340183b0 DEOPT PACKING pc=0x00007fc924f79718 sp=0x00007fc93a7fc930
+Event: 842.593 Thread 0x00007fc9340183b0 DEOPT UNPACKING pc=0x00007fc92498e693 sp=0x00007fc93a7fc860 mode 2
+Event: 847.013 Thread 0x00007fc9340183b0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x00007fc924f68a20 relative=0x0000000000000500
+Event: 847.013 Thread 0x00007fc9340183b0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007fc924f68a20 method=com.esotericsoftware.kryo.io.Input.readUtf8(I)V @ 79 c2
+Event: 847.013 Thread 0x00007fc9340183b0 DEOPT PACKING pc=0x00007fc924f68a20 sp=0x00007fc93a7fc8e0
+Event: 847.013 Thread 0x00007fc9340183b0 DEOPT UNPACKING pc=0x00007fc92498e693 sp=0x00007fc93a7fc878 mode 2
+
+Classes loaded (20 events):
+Event: 61.616 Loading class jdk/internal/reflect/ByteVector
+Event: 61.616 Loading class jdk/internal/reflect/ByteVector done
+Event: 61.616 Loading class jdk/internal/reflect/ByteVectorImpl done
+Event: 61.631 Loading class jdk/internal/reflect/ClassFileAssembler
+Event: 61.631 Loading class jdk/internal/reflect/ClassFileAssembler done
+Event: 61.632 Loading class jdk/internal/reflect/UTF8
+Event: 61.632 Loading class jdk/internal/reflect/UTF8 done
+Event: 61.636 Loading class jdk/internal/reflect/Label
+Event: 61.636 Loading class jdk/internal/reflect/Label done
+Event: 61.654 Loading class jdk/internal/reflect/Label$PatchInfo
+Event: 61.654 Loading class jdk/internal/reflect/Label$PatchInfo done
+Event: 61.654 Loading class jdk/internal/reflect/MethodAccessorGenerator$1
+Event: 61.655 Loading class jdk/internal/reflect/MethodAccessorGenerator$1 done
+Event: 61.655 Loading class jdk/internal/reflect/ClassDefiner
+Event: 61.655 Loading class jdk/internal/reflect/ClassDefiner done
+Event: 61.655 Loading class jdk/internal/reflect/ClassDefiner$1
+Event: 61.655 Loading class jdk/internal/reflect/ClassDefiner$1 done
+Event: 601.492 Loading class jdk/internal/misc/ScopedMemoryAccess$Scope$Handle
+Event: 601.493 Loading class jdk/internal/misc/ScopedMemoryAccess$Scope$Handle done
+Event: 896.777 Loading class java/io/ObjectStreamClass
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 7.206 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6d661e0}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d6d661e0) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.216 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6d777a8}: 'java.lang.Object java.lang.invoke.Invokers$Holder.invoker(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d6d777a8) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.239 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6d80330}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, java.lang.Object, int)'> (0x00000000d6d80330) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.254 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6d8bfe8}: 'void java.lang.invoke.DelegatingMethodHandle$Holder.delegate(java.lang.Object, java.lang.Object, int, java.lang.Object)'> (0x00000000d6d8bfe8) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.264 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6d90100}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d6d90100) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.326 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d6da3128}: 'java.lang.Object java.lang.invoke.Invokers$Holder.invokeExact_MT(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d6da3128) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 7.550 Thread 0x00007fc9340183b0 Exception <a 'java/lang/UnsatisfiedLinkError'{0x00000000d6c657c8}> (0x00000000d6c657c8) 
+thrown [./src/hotspot/share/prims/jvm.cpp, line 3378]
+Event: 7.550 Thread 0x00007fc9340183b0 Exception <a 'java/lang/UnsatisfiedLinkError'{0x00000000d6c657c8}> (0x00000000d6c657c8) 
+thrown [./src/hotspot/share/prims/jni.cpp, line 516]
+Event: 8.574 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d74d5f50}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d74d5f50) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 8.658 Thread 0x00007fc9340183b0 Implicit null exception at 0x00007fc924f0768c to 0x00007fc924f07b98
+Event: 8.658 Thread 0x00007fc9340183b0 Implicit null exception at 0x00007fc924f00b87 to 0x00007fc924f010a4
+Event: 8.785 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d7234b68}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object)'> (0x00000000d7234b68) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 8.980 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d72c3fb8}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d72c3fb8) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.332 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d7511b80}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object, long, java.lang.Object)'> (0x00000000d7511b80) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.340 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d7518318}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, long)'> (0x00000000d7518318) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.353 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d751c608}: 'java.lang.Object java.lang.invoke.Invokers$Holder.linkToTargetMethod(java.lang.Object, long, java.lang.Object)'> (0x00000000d751c608) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.372 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d7523190}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.newInvokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object, int)'> (0x00000000d7523190) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.381 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d7527940}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeSpecial(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, int)'> (0x00000000d7527940) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 10.398 Thread 0x00007fc9348f9570 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d752b508}: 'java.lang.Object java.lang.invoke.Invokers$Holder.linkToTargetMethod(java.lang.Object, java.lang.Object, int, java.lang.Object)'> (0x00000000d752b508) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+Event: 24.633 Thread 0x00007fc9340183b0 Exception <a 'java/lang/NoSuchMethodError'{0x00000000d748d330}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, java.lang.Object, java.lang.Object)'> (0x00000000d748d330) 
+thrown [./src/hotspot/share/interpreter/linkResolver.cpp, line 758]
+
+VM Operations (20 events):
+Event: 656.602 Executing VM operation: Cleanup
+Event: 656.602 Executing VM operation: Cleanup done
+Event: 659.604 Executing VM operation: Cleanup
+Event: 659.604 Executing VM operation: Cleanup done
+Event: 661.729 Executing VM operation: HandshakeAllThreads
+Event: 661.729 Executing VM operation: HandshakeAllThreads done
+Event: 662.730 Executing VM operation: Cleanup
+Event: 662.730 Executing VM operation: Cleanup done
+Event: 721.823 Executing VM operation: HandshakeAllThreads
+Event: 721.824 Executing VM operation: HandshakeAllThreads done
+Event: 781.978 Executing VM operation: HandshakeAllThreads
+Event: 781.979 Executing VM operation: HandshakeAllThreads done
+Event: 807.011 Executing VM operation: Cleanup
+Event: 807.011 Executing VM operation: Cleanup done
+Event: 827.023 Executing VM operation: Cleanup
+Event: 827.023 Executing VM operation: Cleanup done
+Event: 842.217 Executing VM operation: HandshakeAllThreads
+Event: 842.218 Executing VM operation: HandshakeAllThreads done
+Event: 843.218 Executing VM operation: Cleanup
+Event: 843.218 Executing VM operation: Cleanup done
+
+Memory protections (18 events):
+Event: 0.006 Protecting memory [0x00007fc93a700000,0x00007fc93a704000] with protection modes 0
+Event: 0.559 Protecting memory [0x00007fc91d0ad000,0x00007fc91d0b1000] with protection modes 0
+Event: 0.565 Protecting memory [0x00007fc91cfad000,0x00007fc91cfb1000] with protection modes 0
+Event: 0.586 Protecting memory [0x00007fc91cb00000,0x00007fc91cb04000] with protection modes 0
+Event: 0.587 Protecting memory [0x00007fc91ca00000,0x00007fc91ca04000] with protection modes 0
+Event: 0.589 Protecting memory [0x00007fc91c900000,0x00007fc91c904000] with protection modes 0
+Event: 0.589 Protecting memory [0x00007fc91c800000,0x00007fc91c804000] with protection modes 0
+Event: 0.593 Protecting memory [0x00007fc91c600000,0x00007fc91c604000] with protection modes 0
+Event: 0.596 Protecting memory [0x00007fc91c700000,0x00007fc91c704000] with protection modes 0
+Event: 0.735 Protecting memory [0x00007fc91c500000,0x00007fc91c504000] with protection modes 0
+Event: 0.763 Protecting memory [0x00007fc91c400000,0x00007fc91c404000] with protection modes 0
+Event: 7.776 Protecting memory [0x00007fc91c0fe000,0x00007fc91c102000] with protection modes 0
+Event: 10.251 Protecting memory [0x00007fc90df00000,0x00007fc90df04000] with protection modes 0
+Event: 10.439 Protecting memory [0x00007fc91cf58000,0x00007fc91cf5c000] with protection modes 0
+Event: 10.480 Protecting memory [0x00007fc90db00000,0x00007fc90db04000] with protection modes 0
+Event: 10.484 Protecting memory [0x00007fc90d700000,0x00007fc90d704000] with protection modes 0
+Event: 25.460 Protecting memory [0x00007fc90df00000,0x00007fc90df04000] with protection modes 0
+Event: 25.476 Protecting memory [0x00007fc90d700000,0x00007fc90d704000] with protection modes 0
+
+Nmethod flushes (0 events):
+No events
+
+Events (20 events):
+Event: 0.558 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340a2f10
+Event: 0.563 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340a42f0
+Event: 0.586 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340a99e0
+Event: 0.587 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340aad90
+Event: 0.587 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340ac1a0
+Event: 0.589 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340adb50
+Event: 0.593 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340af080
+Event: 0.593 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340b04f0
+Event: 0.735 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340ed710
+Event: 0.763 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9340ef650
+Event: 7.774 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9348049b0
+Event: 10.251 Thread 0x00007fc9340183b0 Thread added: 0x00007fc9348f9570
+Event: 10.439 Thread 0x00007fc9348f9570 Thread added: 0x00007fc8ac00a250
+Event: 10.474 Thread 0x00007fc9348f9570 Thread added: 0x00007fc8ac00c130
+Event: 10.484 Thread 0x00007fc9348f9570 Thread added: 0x00007fc8ac00d6f0
+Event: 10.486 Thread 0x00007fc8ac00c130 Thread exited: 0x00007fc8ac00c130
+Event: 24.472 Thread 0x00007fc8ac00d6f0 Thread exited: 0x00007fc8ac00d6f0
+Event: 24.488 Thread 0x00007fc9348f9570 Thread exited: 0x00007fc9348f9570
+Event: 25.459 Thread 0x00007fc9340183b0 Thread added: 0x00007fc93473e470
+Event: 25.469 Thread 0x00007fc9340183b0 Thread added: 0x00007fc93473edb0
+
+
+Dynamic libraries:
+d4c00000-d7800000 rw-p 00000000 00:00 0 
+d7800000-ffe00000 ---p 00000000 00:00 0 
+ffe00000-ffe75000 rw-p 00c77000 00:2d 315442                             /usr/lib/jvm/java-17-openjdk-amd64/lib/server/classes.jsa
+ffe75000-fff00000 rw-p 00000000 00:00 0 
+fff00000-fff78000 rw-p 00bff000 00:2d 315442                             /usr/lib/jvm/java-17-openjdk-amd64/lib/server/classes.jsa
+fff78000-100000000 rw-p 00000000 00:00 0 
+55838ee6f000-55838ee70000 r--p 00000000 00:2d 315287                     /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+55838ee70000-55838ee71000 r-xp 00001000 00:2d 315287                     /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+55838ee71000-55838ee72000 r--p 00002000 00:2d 315287                     /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+55838ee72000-55838ee73000 r--p 00002000 00:2d 315287                     /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+55838ee73000-55838ee74000 rw-p 00003000 00:2d 315287                     /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+55839f0cc000-55839f113000 rw-p 00000000 00:00 0                          [heap]
+7fc898000000-7fc898393000 rw-p 00000000 00:00 0 
+7fc898393000-7fc89c000000 ---p 00000000 00:00 0 
+7fc89c000000-7fc89c021000 rw-p 00000000 00:00 0 
+7fc89c021000-7fc8a0000000 ---p 00000000 00:00 0 
+7fc8a0000000-7fc8a0027000 rw-p 00000000 00:00 0 
+7fc8a0027000-7fc8a4000000 ---p 00000000 00:00 0 
+7fc8a4000000-7fc8a5570000 rw-p 00000000 00:00 0 
+7fc8a5570000-7fc8a8000000 ---p 00000000 00:00 0 
+7fc8a8000000-7fc8a8021000 rw-p 00000000 00:00 0 
+7fc8a8021000-7fc8ac000000 ---p 00000000 00:00 0 
+7fc8ac000000-7fc8ac027000 rw-p 00000000 00:00 0 
+7fc8ac027000-7fc8b0000000 ---p 00000000 00:00 0 
+7fc8b0000000-7fc8b0021000 rw-p 00000000 00:00 0 
+7fc8b0021000-7fc8b4000000 ---p 00000000 00:00 0 
+7fc8b4000000-7fc8b4021000 rw-p 00000000 00:00 0 
+7fc8b4021000-7fc8b8000000 ---p 00000000 00:00 0 
+7fc8b8000000-7fc8b8021000 rw-p 00000000 00:00 0 
+7fc8b8021000-7fc8bc000000 ---p 00000000 00:00 0 
+7fc8bf000000-7fc8bfbc7000 rw-p 00001000 00:2d 315442                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/classes.jsa
+7fc8bfbc7000-7fc8c0000000 ---p 00000000 00:00 0 
+7fc8c0000000-7fc8c0030000 rw-p 00000000 00:00 0 
+7fc8c0030000-7fc8c0070000 rw-p 00000000 00:00 0 
+7fc8c0070000-7fc8c00f0000 rw-p 00000000 00:00 0 
+7fc8c00f0000-7fc8c0150000 rw-p 00000000 00:00 0 
+7fc8c0150000-7fc8c0160000 ---p 00000000 00:00 0 
+7fc8c0160000-7fc8c0170000 rw-p 00000000 00:00 0 
+7fc8c0170000-7fc900000000 ---p 00000000 00:00 0 
+7fc900000000-7fc900021000 rw-p 00000000 00:00 0 
+7fc900021000-7fc904000000 ---p 00000000 00:00 0 
+7fc904000000-7fc9043e0000 rw-p 00000000 00:00 0 
+7fc9043e0000-7fc904400000 ---p 00000000 00:00 0 
+7fc904400000-7fc904890000 rw-p 00000000 00:00 0 
+7fc904890000-7fc908000000 ---p 00000000 00:00 0 
+7fc908000000-7fc908021000 rw-p 00000000 00:00 0 
+7fc908021000-7fc90c000000 ---p 00000000 00:00 0 
+7fc90d173000-7fc90d400000 rw-p 00000000 00:00 0 
+7fc90d400000-7fc90d403000 r-xp 00000000 00:2d 324044                     /home/anafibnshahibul/.gradle/native/jansi/1.18/linux64/libjansi.so
+7fc90d403000-7fc90d602000 ---p 00003000 00:2d 324044                     /home/anafibnshahibul/.gradle/native/jansi/1.18/linux64/libjansi.so
+7fc90d602000-7fc90d603000 rw-p 00002000 00:2d 324044                     /home/anafibnshahibul/.gradle/native/jansi/1.18/linux64/libjansi.so
+7fc90d700000-7fc90d704000 ---p 00000000 00:00 0 
+7fc90d704000-7fc90d800000 rw-p 00000000 00:00 0 
+7fc90d800000-7fc90d804000 r-xp 00000000 00:2d 324050                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses6/libnative-platform-curses.so
+7fc90d804000-7fc90da03000 ---p 00004000 00:2d 324050                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses6/libnative-platform-curses.so
+7fc90da03000-7fc90da04000 r--p 00003000 00:2d 324050                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses6/libnative-platform-curses.so
+7fc90da04000-7fc90da05000 rw-p 00004000 00:2d 324050                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64-ncurses6/libnative-platform-curses.so
+7fc90db00000-7fc90db04000 ---p 00000000 00:00 0 
+7fc90db04000-7fc90dc00000 rw-p 00000000 00:00 0 
+7fc90dc00000-7fc90dc05000 r-xp 00000000 00:2d 324041                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64/libnative-platform.so
+7fc90dc05000-7fc90de05000 ---p 00005000 00:2d 324041                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64/libnative-platform.so
+7fc90de05000-7fc90de06000 r--p 00005000 00:2d 324041                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64/libnative-platform.so
+7fc90de06000-7fc90de07000 rw-p 00006000 00:2d 324041                     /home/anafibnshahibul/.gradle/native/c067742578af261105cb4f569cf0c3c89f3d7b1fecec35dd04571415982c5e48/linux-amd64/libnative-platform.so
+7fc90df00000-7fc90df04000 ---p 00000000 00:00 0 
+7fc90df04000-7fc910000000 rw-p 00000000 00:00 0 
+7fc910000000-7fc910021000 rw-p 00000000 00:00 0 
+7fc910021000-7fc914000000 ---p 00000000 00:00 0 
+7fc914000000-7fc914021000 rw-p 00000000 00:00 0 
+7fc914021000-7fc918000000 ---p 00000000 00:00 0 
+7fc918000000-7fc918021000 rw-p 00000000 00:00 0 
+7fc918021000-7fc91c000000 ---p 00000000 00:00 0 
+7fc91c0fe000-7fc91c102000 ---p 00000000 00:00 0 
+7fc91c102000-7fc91c1fe000 rw-p 00000000 00:00 0 
+7fc91c1fe000-7fc91c1ff000 ---p 00000000 00:00 0 
+7fc91c1ff000-7fc91c2ff000 rw-p 00000000 00:00 0 
+7fc91c2ff000-7fc91c300000 ---p 00000000 00:00 0 
+7fc91c300000-7fc91c400000 rw-p 00000000 00:00 0 
+7fc91c400000-7fc91c404000 ---p 00000000 00:00 0 
+7fc91c404000-7fc91c500000 rw-p 00000000 00:00 0 
+7fc91c500000-7fc91c504000 ---p 00000000 00:00 0 
+7fc91c504000-7fc91c600000 rw-p 00000000 00:00 0 
+7fc91c600000-7fc91c604000 ---p 00000000 00:00 0 
+7fc91c604000-7fc91c700000 rw-p 00000000 00:00 0 
+7fc91c700000-7fc91c704000 ---p 00000000 00:00 0 
+7fc91c704000-7fc91c800000 rw-p 00000000 00:00 0 
+7fc91c800000-7fc91c804000 ---p 00000000 00:00 0 
+7fc91c804000-7fc91c900000 rw-p 00000000 00:00 0 
+7fc91c900000-7fc91c904000 ---p 00000000 00:00 0 
+7fc91c904000-7fc91ca00000 rw-p 00000000 00:00 0 
+7fc91ca00000-7fc91ca04000 ---p 00000000 00:00 0 
+7fc91ca04000-7fc91cb00000 rw-p 00000000 00:00 0 
+7fc91cb00000-7fc91cb04000 ---p 00000000 00:00 0 
+7fc91cb04000-7fc91cc00000 rw-p 00000000 00:00 0 
+7fc91cc00000-7fc91cee9000 r--p 00000000 00:2d 184034                     /usr/lib/locale/locale-archive
+7fc91cf58000-7fc91cf5c000 ---p 00000000 00:00 0 
+7fc91cf5c000-7fc91cf7a000 rw-p 00000000 00:00 0 
+7fc91cf7a000-7fc91cf89000 r--p 00000000 00:2d 5071                       /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7fc91cf89000-7fc91cf9a000 r-xp 0000f000 00:2d 5071                       /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7fc91cf9a000-7fc91cfa8000 r--p 00020000 00:2d 5071                       /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7fc91cfa8000-7fc91cfac000 r--p 0002d000 00:2d 5071                       /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7fc91cfac000-7fc91cfad000 rw-p 00031000 00:2d 5071                       /usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+7fc91cfad000-7fc91cfb1000 ---p 00000000 00:00 0 
+7fc91cfb1000-7fc91d0ad000 rw-p 00000000 00:00 0 
+7fc91d0ad000-7fc91d0b1000 ---p 00000000 00:00 0 
+7fc91d0b1000-7fc91d1ad000 rw-p 00000000 00:00 0 
+7fc91d1ad000-7fc91d1ae000 ---p 00000000 00:00 0 
+7fc91d1ae000-7fc91d2ae000 rw-p 00000000 00:00 0 
+7fc91d2ae000-7fc91d2b3000 r--p 00000000 00:2d 315424                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+7fc91d2b3000-7fc91d2f4000 r-xp 00005000 00:2d 315424                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+7fc91d2f4000-7fc91d37d000 r--p 00046000 00:2d 315424                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+7fc91d37d000-7fc91d37e000 r--p 000ce000 00:2d 315424                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+7fc91d37e000-7fc91d37f000 rw-p 000cf000 00:2d 315424                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjsvml.so
+7fc91d37f000-7fc91d400000 rw-p 00000000 00:00 0 
+7fc91d400000-7fc91d720000 rwxp 00000000 00:00 0 
+7fc91d720000-7fc924938000 ---p 00000000 00:00 0 
+7fc924938000-7fc924ba8000 rwxp 00000000 00:00 0 
+7fc924ba8000-7fc924ec7000 ---p 00000000 00:00 0 
+7fc924ec7000-7fc925137000 rwxp 00000000 00:00 0 
+7fc925137000-7fc92c400000 ---p 00000000 00:00 0 
+7fc92c400000-7fc933eea000 r--s 00000000 00:2d 315439                     /usr/lib/jvm/java-17-openjdk-amd64/lib/modules
+7fc933eec000-7fc933eed000 r--p 00000000 00:2d 315410                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+7fc933eed000-7fc933eee000 r-xp 00001000 00:2d 315410                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+7fc933eee000-7fc933eef000 r--p 00002000 00:2d 315410                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+7fc933eef000-7fc933ef0000 r--p 00002000 00:2d 315410                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+7fc933ef0000-7fc933ef1000 rw-p 00003000 00:2d 315410                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libextnet.so
+7fc933ef1000-7fc933ef3000 r--p 00000000 00:2d 315428                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+7fc933ef3000-7fc933ef6000 r-xp 00002000 00:2d 315428                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+7fc933ef6000-7fc933ef7000 r--p 00005000 00:2d 315428                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+7fc933ef7000-7fc933ef8000 r--p 00006000 00:2d 315428                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+7fc933ef8000-7fc933ef9000 rw-p 00007000 00:2d 315428                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement_ext.so
+7fc933ef9000-7fc933efb000 r--p 00000000 00:2d 315426                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+7fc933efb000-7fc933efc000 r-xp 00002000 00:2d 315426                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+7fc933efc000-7fc933efd000 r--p 00003000 00:2d 315426                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+7fc933efd000-7fc933efe000 r--p 00003000 00:2d 315426                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+7fc933efe000-7fc933eff000 rw-p 00004000 00:2d 315426                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libmanagement.so
+7fc933eff000-7fc933f00000 ---p 00000000 00:00 0 
+7fc933f00000-7fc934000000 rw-p 00000000 00:00 0 
+7fc934000000-7fc934a7d000 rw-p 00000000 00:00 0 
+7fc934a7d000-7fc938000000 ---p 00000000 00:00 0 
+7fc938000000-7fc938009000 r--p 00000000 00:2d 4937                       /usr/lib/x86_64-linux-gnu/libncursesw.so.6.4
+7fc938009000-7fc93802f000 r-xp 00009000 00:2d 4937                       /usr/lib/x86_64-linux-gnu/libncursesw.so.6.4
+7fc93802f000-7fc938038000 r--p 0002f000 00:2d 4937                       /usr/lib/x86_64-linux-gnu/libncursesw.so.6.4
+7fc938038000-7fc938039000 r--p 00037000 00:2d 4937                       /usr/lib/x86_64-linux-gnu/libncursesw.so.6.4
+7fc938039000-7fc93803a000 rw-p 00038000 00:2d 4937                       /usr/lib/x86_64-linux-gnu/libncursesw.so.6.4
+7fc93803c000-7fc938043000 r--s 00000000 00:2d 176599                     /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7fc938043000-7fc938074000 rw-p 00000000 00:00 0 
+7fc938074000-7fc938075000 ---p 00000000 00:00 0 
+7fc938075000-7fc938377000 rw-p 00000000 00:00 0 
+7fc938377000-7fc938378000 ---p 00000000 00:00 0 
+7fc938378000-7fc938478000 rw-p 00000000 00:00 0 
+7fc938478000-7fc938479000 ---p 00000000 00:00 0 
+7fc938479000-7fc938579000 rw-p 00000000 00:00 0 
+7fc938579000-7fc93857a000 ---p 00000000 00:00 0 
+7fc93857a000-7fc93872a000 rw-p 00000000 00:00 0 
+7fc93872a000-7fc939142000 ---p 00000000 00:00 0 
+7fc939142000-7fc9391fa000 rw-p 00000000 00:00 0 
+7fc9391fa000-7fc939c12000 ---p 00000000 00:00 0 
+7fc939c12000-7fc939c30000 rw-p 00000000 00:00 0 
+7fc939c30000-7fc939d73000 ---p 00000000 00:00 0 
+7fc939d73000-7fc939d8a000 rw-p 00000000 00:00 0 
+7fc939d8a000-7fc939ecd000 ---p 00000000 00:00 0 
+7fc939ecd000-7fc939ee4000 rw-p 00000000 00:00 0 
+7fc939ee4000-7fc93a027000 ---p 00000000 00:00 0 
+7fc93a027000-7fc93a22f000 rw-p 00000000 00:00 0 
+7fc93a22f000-7fc93a315000 ---p 00000000 00:00 0 
+7fc93a315000-7fc93a31c000 rw-p 00000000 00:00 0 
+7fc93a31c000-7fc93a400000 ---p 00000000 00:00 0 
+7fc93a400000-7fc93a499000 r--p 00000000 00:2d 5056                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+7fc93a499000-7fc93a59a000 r-xp 00099000 00:2d 5056                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+7fc93a59a000-7fc93a609000 r--p 0019a000 00:2d 5056                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+7fc93a609000-7fc93a614000 r--p 00209000 00:2d 5056                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+7fc93a614000-7fc93a617000 rw-p 00214000 00:2d 5056                       /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
+7fc93a617000-7fc93a61a000 rw-p 00000000 00:00 0 
+7fc93a61d000-7fc93a621000 r--p 00000000 00:2d 315437                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+7fc93a621000-7fc93a628000 r-xp 00004000 00:2d 315437                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+7fc93a628000-7fc93a62a000 r--p 0000b000 00:2d 315437                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+7fc93a62a000-7fc93a62c000 r--p 0000c000 00:2d 315437                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+7fc93a62c000-7fc93a62d000 rw-p 0000e000 00:2d 315437                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libverify.so
+7fc93a62d000-7fc93a6c9000 rw-p 00000000 00:00 0 
+7fc93a6c9000-7fc93a6cb000 r--p 00000000 00:2d 315438                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+7fc93a6cb000-7fc93a6cf000 r-xp 00002000 00:2d 315438                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+7fc93a6cf000-7fc93a6d1000 r--p 00006000 00:2d 315438                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+7fc93a6d1000-7fc93a6d2000 r--p 00007000 00:2d 315438                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+7fc93a6d2000-7fc93a6d3000 rw-p 00008000 00:2d 315438                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libzip.so
+7fc93a6d3000-7fc93a6d7000 r--p 00000000 00:2d 315430                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+7fc93a6d7000-7fc93a6e5000 r-xp 00004000 00:2d 315430                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+7fc93a6e5000-7fc93a6e9000 r--p 00012000 00:2d 315430                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+7fc93a6e9000-7fc93a6ea000 r--p 00015000 00:2d 315430                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+7fc93a6ea000-7fc93a6eb000 rw-p 00016000 00:2d 315430                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnet.so
+7fc93a6eb000-7fc93a6f1000 r--p 00000000 00:2d 315431                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+7fc93a6f1000-7fc93a6fa000 r-xp 00006000 00:2d 315431                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+7fc93a6fa000-7fc93a6fe000 r--p 0000f000 00:2d 315431                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+7fc93a6fe000-7fc93a6ff000 r--p 00013000 00:2d 315431                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+7fc93a6ff000-7fc93a700000 rw-p 00014000 00:2d 315431                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libnio.so
+7fc93a700000-7fc93a704000 ---p 00000000 00:00 0 
+7fc93a704000-7fc93a800000 rw-p 00000000 00:00 0 
+7fc93a800000-7fc93aa51000 r--p 00000000 00:2d 315445                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so
+7fc93aa51000-7fc93b7a3000 r-xp 00251000 00:2d 315445                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so
+7fc93b7a3000-7fc93ba25000 r--p 00fa3000 00:2d 315445                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so
+7fc93ba25000-7fc93badd000 r--p 01224000 00:2d 315445                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so
+7fc93badd000-7fc93bb12000 rw-p 012dc000 00:2d 315445                     /usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so
+7fc93bb12000-7fc93bb6c000 rw-p 00000000 00:00 0 
+7fc93bb6c000-7fc93bb6d000 r--p 00000000 00:2d 176350                     /usr/lib/x86_64-linux-gnu/libutil.so.1
+7fc93bb6d000-7fc93bb6e000 r-xp 00001000 00:2d 176350                     /usr/lib/x86_64-linux-gnu/libutil.so.1
+7fc93bb6e000-7fc93bb6f000 r--p 00002000 00:2d 176350                     /usr/lib/x86_64-linux-gnu/libutil.so.1
+7fc93bb6f000-7fc93bb70000 r--p 00002000 00:2d 176350                     /usr/lib/x86_64-linux-gnu/libutil.so.1
+7fc93bb70000-7fc93bb71000 rw-p 00003000 00:2d 176350                     /usr/lib/x86_64-linux-gnu/libutil.so.1
+7fc93bb71000-7fc93bb8e000 rw-p 00000000 00:00 0 
+7fc93bb8e000-7fc93bb95000 ---p 00000000 00:00 0 
+7fc93bb95000-7fc93bba1000 r--p 00000000 00:2d 315417                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+7fc93bba1000-7fc93bbb2000 r-xp 0000c000 00:2d 315417                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+7fc93bbb2000-7fc93bbb8000 r--p 0001d000 00:2d 315417                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+7fc93bbb8000-7fc93bbb9000 r--p 00022000 00:2d 315417                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+7fc93bbb9000-7fc93bbba000 rw-p 00023000 00:2d 315417                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjava.so
+7fc93bbba000-7fc93bbbb000 rw-p 00000000 00:00 0 
+7fc93bbbb000-7fc93bbc3000 rw-s 00000000 00:2d 327818                     /tmp/hsperfdata_anafibnshahibul/13537
+7fc93bbc3000-7fc93bbc4000 ---p 00000000 00:00 0 
+7fc93bbc4000-7fc93bbc5000 r--p 00000000 00:00 0 
+7fc93bbc5000-7fc93bbc8000 r--p 00000000 00:2d 4785                       /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+7fc93bbc8000-7fc93bbdf000 r-xp 00003000 00:2d 4785                       /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+7fc93bbdf000-7fc93bbe3000 r--p 0001a000 00:2d 4785                       /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+7fc93bbe3000-7fc93bbe4000 r--p 0001d000 00:2d 4785                       /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+7fc93bbe4000-7fc93bbe5000 rw-p 0001e000 00:2d 4785                       /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+7fc93bbe5000-7fc93bbf5000 r--p 00000000 00:2d 176337                     /usr/lib/x86_64-linux-gnu/libm.so.6
+7fc93bbf5000-7fc93bc69000 r-xp 00010000 00:2d 176337                     /usr/lib/x86_64-linux-gnu/libm.so.6
+7fc93bc69000-7fc93bcc3000 r--p 00084000 00:2d 176337                     /usr/lib/x86_64-linux-gnu/libm.so.6
+7fc93bcc3000-7fc93bcc4000 r--p 000dd000 00:2d 176337                     /usr/lib/x86_64-linux-gnu/libm.so.6
+7fc93bcc4000-7fc93bcc5000 rw-p 000de000 00:2d 176337                     /usr/lib/x86_64-linux-gnu/libm.so.6
+7fc93bcc5000-7fc93bcc7000 rw-p 00000000 00:00 0 
+7fc93bcc7000-7fc93bced000 r--p 00000000 00:2d 176334                     /usr/lib/x86_64-linux-gnu/libc.so.6
+7fc93bced000-7fc93be43000 r-xp 00026000 00:2d 176334                     /usr/lib/x86_64-linux-gnu/libc.so.6
+7fc93be43000-7fc93be96000 r--p 0017c000 00:2d 176334                     /usr/lib/x86_64-linux-gnu/libc.so.6
+7fc93be96000-7fc93be9a000 r--p 001cf000 00:2d 176334                     /usr/lib/x86_64-linux-gnu/libc.so.6
+7fc93be9a000-7fc93be9c000 rw-p 001d3000 00:2d 176334                     /usr/lib/x86_64-linux-gnu/libc.so.6
+7fc93be9c000-7fc93bea9000 rw-p 00000000 00:00 0 
+7fc93bea9000-7fc93beab000 r--p 00000000 00:2d 315421                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjli.so
+7fc93beab000-7fc93beb4000 r-xp 00002000 00:2d 315421                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjli.so
+7fc93beb4000-7fc93beb7000 r--p 0000b000 00:2d 315421                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjli.so
+7fc93beb7000-7fc93beb8000 r--p 0000d000 00:2d 315421                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjli.so
+7fc93beb8000-7fc93beb9000 rw-p 0000e000 00:2d 315421                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjli.so
+7fc93beb9000-7fc93bebc000 r--p 00000000 00:2d 5172                       /usr/lib/x86_64-linux-gnu/libz.so.1.2.13
+7fc93bebc000-7fc93becf000 r-xp 00003000 00:2d 5172                       /usr/lib/x86_64-linux-gnu/libz.so.1.2.13
+7fc93becf000-7fc93bed6000 r--p 00016000 00:2d 5172                       /usr/lib/x86_64-linux-gnu/libz.so.1.2.13
+7fc93bed6000-7fc93bed7000 r--p 0001c000 00:2d 5172                       /usr/lib/x86_64-linux-gnu/libz.so.1.2.13
+7fc93bed7000-7fc93bed8000 rw-p 0001d000 00:2d 5172                       /usr/lib/x86_64-linux-gnu/libz.so.1.2.13
+7fc93bed8000-7fc93bed9000 ---p 00000000 00:00 0 
+7fc93bed9000-7fc93bedb000 r--p 00000000 00:2d 315420                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+7fc93bedb000-7fc93bede000 r-xp 00002000 00:2d 315420                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+7fc93bede000-7fc93bedf000 r--p 00005000 00:2d 315420                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+7fc93bedf000-7fc93bee0000 r--p 00006000 00:2d 315420                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+7fc93bee0000-7fc93bee1000 rw-p 00007000 00:2d 315420                     /usr/lib/jvm/java-17-openjdk-amd64/lib/libjimage.so
+7fc93bee1000-7fc93bee3000 rw-p 00000000 00:00 0 
+7fc93bee3000-7fc93bee4000 r--p 00000000 00:2d 176331                     /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fc93bee4000-7fc93bf0a000 r-xp 00001000 00:2d 176331                     /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fc93bf0a000-7fc93bf14000 r--p 00027000 00:2d 176331                     /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fc93bf14000-7fc93bf16000 r--p 00031000 00:2d 176331                     /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7fc93bf16000-7fc93bf18000 rw-p 00033000 00:2d 176331                     /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffcb334e000-7ffcb336f000 rw-p 00000000 00:00 0                          [stack]
+7ffcb33e8000-7ffcb33ec000 r--p 00000000 00:00 0                          [vvar]
+7ffcb33ec000-7ffcb33ee000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: --add-opens=java.base/java.lang=ALL-UNNAMED -Dorg.gradle.appname=gradlew 
+java_command: org.gradle.wrapper.GradleWrapperMain assembleDebug --no-daemon --max-workers=1 --no-build-cache
+java_class_path (initial): /home/anafibnshahibul/arcade-box/gradle/wrapper/gradle-wrapper.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 2                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 46137344                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 725614592                                 {product} {ergonomic}
+   size_t MaxNewSize                               = 435159040                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5826188                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122916026                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122916026                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 725614592                              {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/home/anafibnshahibul/.local/bin:/home/anafibnshahibul/.config/nvm/versions/node/v22.22.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+XDG_CONFIG_HOME=/home/anafibnshahibul/.config
+SHELL=/bin/bash
+DISPLAY=:0
+LANG=en_US.UTF-8
+TERM=xterm-256color
+
+Active Locale:
+LC_ALL=en_US.UTF-8
+LC_COLLATE=en_US.UTF-8
+LC_CTYPE=en_US.UTF-8
+LC_MESSAGES=en_US.UTF-8
+LC_MONETARY=en_US.UTF-8
+LC_NUMERIC=en_US.UTF-8
+LC_TIME=en_US.UTF-8
+
+Signal Handlers:
+   SIGSEGV: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+    SIGBUS: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+    SIGFPE: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+   SIGPIPE: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGXFSZ: javaSignalHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGILL: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+   SIGUSR2: SR_handler in libjvm.so, mask=00000000000000000000000000000000, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGHUP: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+    SIGINT: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGTERM: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGQUIT: UserHandler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, blocked
+   SIGTRAP: crash_handler in libjvm.so, mask=11100100010111111101111111111110, flags=SA_RESTART|SA_SIGINFO, unblocked
+
+
+Periodic native trim disabled
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+uname: Linux 6.6.99-09000-gd3ae1caecf39 #1 SMP PREEMPT_DYNAMIC Thu, 27 Nov 2025 21:00:42 -0800 x86_64
+OS uptime: 0 days 4:56 hours
+libc: glibc 2.36 NPTL 2.36 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 11034/11034 , NOFILE 1048576/1048576 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK infinity/infinity
+load average: 2.33 1.67 1.77
+
+/proc/meminfo:
+MemTotal:        2827120 kB
+MemFree:         1329872 kB
+MemAvailable:    1889316 kB
+Buffers:               0 kB
+Cached:           559444 kB
+SwapCached:            0 kB
+Active:          1093500 kB
+Inactive:         364628 kB
+Active(anon):     898844 kB
+Inactive(anon):        0 kB
+Active(file):     194656 kB
+Inactive(file):   364628 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:              2176 kB
+Writeback:             0 kB
+AnonPages:        898692 kB
+Mapped:            51252 kB
+Shmem:               152 kB
+KReclaimable:      33548 kB
+Slab:                  0 kB
+SReclaimable:          0 kB
+SUnreclaim:            0 kB
+KernelStack:        4144 kB
+PageTables:         5652 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1413560 kB
+Committed_AS:    2064524 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        6776 kB
+VmallocChunk:          0 kB
+Percpu:              776 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:       79872 kB
+DirectMap2M:     2840576 kB
+DirectMap1G:           0 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled: always madvise [never]
+/sys/kernel/mm/transparent_hugepage/hpage_pmd_size: 2097152
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter): always defer defer+madvise [madvise] never
+
+Process Memory:
+Virtual Size: 3323596K (peak: 3324592K)
+Resident Set Size: 105148K (peak: 108572K) (anon: 82424K, file: 22724K, shmem: 0K)
+Swapped out: 0K
+C-Heap outstanding allocations: 20159K, retained: 14776K
+glibc malloc tunables: (default)
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads): 22068
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have): 262144
+/proc/sys/vm/swappiness (control to define how aggressively the kernel swaps out anonymous memory): 60
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers): 32768
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-1
+cpu_memory_nodes: 0
+active_processor_count: 2
+cpu_quota: no quota
+cpu_period: 100000
+cpu_shares: no shares
+memory_limit_in_bytes: unlimited
+memory_and_swap_limit_in_bytes: unlimited
+memory_soft_limit_in_bytes: unlimited
+memory_usage_in_bytes: 1408752 k
+memory_max_usage_in_bytes: 1572504 k
+rss_usage_in_bytes: 886880 k
+cache_usage_in_bytes: 494324 k
+kernel_memory_limit_in_bytes: unlimited
+kernel_memory_usage_in_bytes: 27468 k
+kernel_memory_max_usage_in_bytes: 35536 k
+maximum number of tasks: unlimited
+current number of tasks: 95
+
+KVM virtualization detected
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU: total 2 (initial active 2) (2 cores per cpu, 1 threads per core) family 6 model 92 stepping 9 microcode 0x1, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, tsc, tscinvbit, aes, erms, clmul, sha, clflush, clflushopt, hv
+CPU Model and flags from /proc/cpuinfo:
+model name	: Intel(R) Celeron(R) CPU N3350 @ 1.10GHz
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 cx16 pdcm sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave rdrand hypervisor lahf_lm 3dnowprefetch cpuid_fault ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust smep erms mpx rdseed smap clflushopt sha_ni xsaveopt xsavec xgetbv1 xsaves arat vnmi umip md_clear arch_capabilities
+
+Online cpus: 0-1
+Offline cpus: 
+BIOS frequency limitation: <Not Available>
+Frequency switch latency (ns): <Not Available>
+Available cpu frequencies: <Not Available>
+Current governor: <Not Available>
+Core performance/turbo boost: <Not Available>
+
+Memory: 4k page, physical 2827120k(71556k free), swap 0k(0k free)
+Page Sizes: 4k
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.19+10-1-deb12u2-Debian) for linux-amd64 JRE (17.0.19+10-1-deb12u2-Debian), built on Apr 25 2026 14:29:27 by "buildd" with gcc 12.2.0
+
+END.
